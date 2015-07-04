@@ -1,0 +1,11 @@
+#!/bin/sh
+
+sudo usb_modeswitch -v 0x12d1 -p 0x1446 -J
+
+tty="ttyUSB0"
+
+while [ ! -e "/dev/$tty" ]; do
+	sleep 1
+done
+
+sudo pppd call ${@:-provider}
