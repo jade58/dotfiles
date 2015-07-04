@@ -5,8 +5,8 @@ color_waring="#cc0000"
 
 echo '{"version":1}[[],'
 
-# sudo killall csq.sh
-# sudo ~/.i3/csq.sh &
+# /bin/sudo killall csq.sh
+# /bin/sudo ~/.i3/csq.sh &
  
 while [ 1 ]; do
 
