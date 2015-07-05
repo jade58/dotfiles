@@ -94,12 +94,12 @@ blocks=(
 )
 
 unset func_list
-bar='${comma:-}\n\t['
+bar='${comma:-}['
 for block in ${blocks[@]}; do
 	func_list+=" get_$block"
-	bar+='\n\t${'$block':-}'
+	bar+='${'$block':-}'
 done
-bar+="\n\t]"
+bar+="]"
 
 echo '{"version":1}[[],' && while [ 1 ]; do
 	for func in $func_list; do
