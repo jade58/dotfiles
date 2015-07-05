@@ -77,7 +77,7 @@ get_date() {
 
 get_time() {
 	time=`date +%H:%M:%S`
-	time="{ \"full_text\":\" $time \", \"color\":\"$color_std\"}"
+	time="{\"full_text\":\" $time \", \"color\":\"$color_std\"}"
 }
 
 # /bin/sudo killall csq.sh
@@ -94,19 +94,18 @@ blocks=(
 )
 
 unset func_list
-bar='${comma:-}['
+bar='['
 for block in ${blocks[@]}; do
 	func_list+=" get_$block"
 	bar+='${'$block':-}'
 done
-bar+="]"
+bar+="],"
 
-echo '{"version":1}[[],' && while [ 1 ]; do
+echo '{"version":1}[' && while [ 1 ]; do
 	for func in $func_list; do
 		$func
 	done
 	eval echo -e \"${bar//\\/\\\\}\" || exit 3
-	comma=','
 
 	sleep 0.5
 done
