@@ -1,0 +1,50 @@
+l
+delete 
+mkdir photos
+rename 0.jpg
+rename 2.jpg
+rename 3.png
+rename 1.jpg
+rename .png
+rename 2.png
+rename 4.jpg
+rename 5.jpg
+rename 6.jpg
+rename 7.jpg
+rename 8.png
+rename 9.jpg
+rename 10.jpg
+rename 11.jpg
+rename 12.png
+rename 13.jpg
+mkdir anm
+mkdir noise
+mkdir heavy
+mkdir behemoth
+rename evangelion/
+shell vim spec.txt
+shell vim LICENSE.md
+shell nano LICENSE.md 
+shell mousepad LICENSE.md 
+shell vim README.md
+shell mousepad README.md
+mkdir parser
+shell vim Program.java
+shell vim Lexer.java
+mkdir classes
+shell vim Clazz.java
+shell vim Classes.java
+
+mkdir vars
+shell vim Vars.java
+shell vim Type.java
+shell vim -p *
+search ]
+search scrot
+search run
+ex
+search deadbee
+rename indians.mp3
+rename 19.jpg
+mkdir 
+delete
