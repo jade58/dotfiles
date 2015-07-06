@@ -17,7 +17,7 @@ converter.output_folder /home/kalterfive
 converter.output_format 0
 converter.overwrite_action 0
 deadbeef_version 0.6.2
-filechooser.lastdir file:///home/kalterfive/music/metal
+filechooser.lastdir file:///home/kalterfive/music/alt
 global_preamp 0.0000000
 gtkui.autoresize_columns 0
 gtkui.embolden_current_track 1
@@ -49,11 +49,11 @@ hotkeys_created 1
 ignore_archives 1
 junk.enable_cp1251_detection 0
 junk.enable_cp936_detection 0
-mainwin.geometry.h 729
+mainwin.geometry.h 745
 mainwin.geometry.maximized 0
 mainwin.geometry.w 1362
 mainwin.geometry.x 0
-mainwin.geometry.y 18
+mainwin.geometry.y 0
 mp3.id3v1_encoding iso8859-1
 mp3.id3v2_version 3
 mp3.write_id3v1 1
@@ -74,29 +74,29 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "№" "%n" -1 37 1
 playlist.column.02 "Artist" "%a" -1 168 0
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 8
+playlist.current 2
 playlist.cursor.0 0
-playlist.cursor.1 5
+playlist.cursor.1 8
 playlist.cursor.10 7
 playlist.cursor.11 5
 playlist.cursor.12 3
 playlist.cursor.13 0
-playlist.cursor.14 0
+playlist.cursor.14 8
 playlist.cursor.15 8
 playlist.cursor.16 0
 playlist.cursor.17 0
 playlist.cursor.18 0
 playlist.cursor.19 1
-playlist.cursor.2 0
+playlist.cursor.2 6
 playlist.cursor.20 0
 playlist.cursor.21 5
-playlist.cursor.22 18
-playlist.cursor.23 5
+playlist.cursor.22 2
+playlist.cursor.23 0
 playlist.cursor.24 5
 playlist.cursor.25 0
 playlist.cursor.3 0
 playlist.cursor.4 7
-playlist.cursor.5 8
+playlist.cursor.5 2
 playlist.cursor.6 0
 playlist.cursor.7 0
 playlist.cursor.8 0
@@ -116,7 +116,7 @@ playlist.scroll.19 0
 playlist.scroll.2 0
 playlist.scroll.20 0
 playlist.scroll.21 0
-playlist.scroll.22 31
+playlist.scroll.22 0
 playlist.scroll.23 0
 playlist.scroll.24 0
 playlist.scroll.25 0
@@ -159,9 +159,9 @@ replaygain_mode 0
 replaygain_preamp 0.0000000
 replaygain_scale 1
 resume.paused 0
-resume.playlist 14
-resume.position -1.000000
-resume.track -1
+resume.playlist 2
+resume.position 222.96450
+resume.track 2
 searchwin.geometry.h 150
 searchwin.geometry.w 450
 searchwin.geometry.x 733

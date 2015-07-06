@@ -8,7 +8,7 @@
 ##
 
 # set background image
-exec feh --bg-fill ~/Pictures/wall/13.jpg
+exec feh --bg-fill ~/Pictures/wall/10.jpg
 
 # x-composition
 # exec xcompmgr

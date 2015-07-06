@@ -1,10 +1,3 @@
-l
-delete 
-mkdir photos
-rename 0.jpg
-rename 2.jpg
-rename 3.png
-rename 1.jpg
 rename .png
 rename 2.png
 rename 4.jpg
@@ -34,7 +27,6 @@ shell vim Lexer.java
 mkdir classes
 shell vim Clazz.java
 shell vim Classes.java
-
 mkdir vars
 shell vim Vars.java
 shell vim Type.java
@@ -42,9 +34,17 @@ shell vim -p *
 search ]
 search scrot
 search run
-ex
 search deadbee
 rename indians.mp3
 rename 19.jpg
 mkdir 
+search man
+
+shell javap -C Parser.class > Parser.asm
+shell 
+ex
+shell javap -c Parser.class > Parser.asm
 delete
+shell make
+search usr
+open_with 

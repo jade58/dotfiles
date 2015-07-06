@@ -3,6 +3,9 @@
 color_std="#cccccc"
 color_waring="#cc0000"
 
+# костыль же, ну!
+echo 3500 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
+
 #get_brg() {
 #	brg=`cat /sys/class/backlight/intel_backlight/brightness`
 #	brg_max=`cat /sys/class/backlight/intel_backlight/max_brightness`
