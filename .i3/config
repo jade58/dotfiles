@@ -43,7 +43,9 @@ floating_modifier $mod
 bindsym Print exec scrot '%Y%m%d%H%M%S.png' -e 'mv $f ~/Pictures/scr/'
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+set $term xterm
+bindsym $mod+Return exec $term
+bindsym $mod+t exec $term
  
 # start dmenu (a program launcher)
 bindsym $mod+d exec ~/.i3/dmenu.sh
