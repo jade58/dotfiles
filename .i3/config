@@ -4,6 +4,18 @@
 
 
 ##
+## variables
+##
+
+# mod-key
+set $alt Mod1
+set $super Mod4
+
+# terminal
+set $term xterm
+
+
+##
 ## autostart
 ##
 
@@ -35,20 +47,17 @@ font pango:DejaVu Mono 8
 ## keys
 ##
 
-# mod-key	 
-set $mod Mod4
-floating_modifier $mod
+floating_modifier $super
 
 # screenshooter
 bindsym Print exec scrot '%Y%m%d%H%M%S.png' -e 'mv $f ~/Pictures/scr/'
 
 # start a terminal
-set $term xterm
-bindsym $mod+Return exec $term
-bindsym $mod+t exec $term
+bindsym $super+Return exec $term
+bindsym $super+t exec $term
  
 # start dmenu (a program launcher)
-bindsym $mod+d exec ~/.i3/dmenu.sh
+bindsym $super+d exec ~/.i3/dmenu.sh
 
 
 ##
@@ -56,42 +65,42 @@ bindsym $mod+d exec ~/.i3/dmenu.sh
 ##
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $super+q kill
 
 # focus tile
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
  
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+l move right
+bindsym $alt+h move left
+bindsym $alt+k move up
+bindsym $alt+j move down
+bindsym $alt+l move right
  
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $super+g split h
  
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $super+v split v
  
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $super+f fullscreen toggle
  
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $super+s layout stacking
+bindsym $super+w layout tabbed
+bindsym $super+e layout toggle split
  
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $alt+space floating toggle
  
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $super+space focus mode_toggle
  
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $super+a focus parent
 
 
 ##
@@ -99,19 +108,19 @@ bindsym $mod+a focus parent
 ##
 
 # reload the configuration file
-bindsym $mod+shift+c reload
+bindsym $alt+c reload
  
 # restart i3 inplace
-bindsym $mod+shift+r restart
+bindsym $alt+r restart
 
 # lock screen
-bindsym $mod+p exec ~/.i3/lock.sh
+bindsym $alt+p exec ~/.i3/lock.sh
 
 # power off
-bindsym $mod+o exec poweroff
+bindsym $alt+o exec poweroff
 
 # exit in i3 # не работает
-# bindsym $mod+Shift+e exit
+# bindsym $alt+e exit
 
 
 ##
@@ -119,33 +128,33 @@ bindsym $mod+o exec poweroff
 ##
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
  
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $alt+1 move container to workspace 1
+bindsym $alt+2 move container to workspace 2
+bindsym $alt+3 move container to workspace 3
+bindsym $alt+4 move container to workspace 4
+bindsym $alt+5 move container to workspace 5
+bindsym $alt+6 move container to workspace 6
+bindsym $alt+7 move container to workspace 7
+bindsym $alt+8 move container to workspace 8
+bindsym $alt+9 move container to workspace 9
 
 
 ##
 ## resize
 ##
 
-bindsym $mod+r mode "resize"
+bindsym $super+r mode "resize"
 
 mode "resize" {
 	bindsym H resize shrink width 10 px or 10 ppt
