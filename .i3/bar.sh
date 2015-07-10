@@ -4,28 +4,31 @@ color_std="#cccccc"
 color_waring="#cc0000"
 
 # костыль же, ну!
-echo 3500 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
+echo 3000 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
 
-#get_brg() {
-#	brg=`cat /sys/class/backlight/intel_backlight/brightness`
-#	brg_max=`cat /sys/class/backlight/intel_backlight/max_brightness`
-#	brg_lvl=`echo "scale=2; $brg/$brg_max*100"\
-#			| bc\
-#			| sed -r 's/\..+//'`
-#
-#	brg="{\"full_text\":\" BRG: $brg_lvl% \",\"color\":\"$color_std\"},"
-#}
+get_brg() {
+	brg=`cat /sys/class/backlight/intel_backlight/brightness`
+	brg_max=`cat /sys/class/backlight/intel_backlight/max_brightness`
+	brg_lvl=`echo "scale=2; $brg/$brg_max*100"\
+			| bc\
+			| sed -r 's/\..+//'`
 
-#get_csq() {
-#	csq=`cat /tmp/csq.txt`
-#	csq="{\"full_text\":\" CSQ: $csq% \",\"color\":\"$color_std\"},"
-#}
+	brg="{\"full_text\":\" BRG: $brg_lvl% \",\"color\":\"$color_std\"},"
+}
 
-#get_capslock() {
-#	capslock=`xset q\
-#			| grep "Caps Lock:"\
-#			| awk '{print($4)}'`
-#}
+get_csq() {
+	csq=`cat /tmp/csq.txt`
+	csq="{\"full_text\":\" CSQ: $csq% \",\"color\":\"$color_std\"},"
+}
+
+get_capslock() {
+	capslock=`xset q\
+			| grep "Caps Lock:"\
+			| awk '{print($4)}'\
+			| tr a-z A-Z`
+
+	capslock="{\"full_text\":\" CPS: $capslock \",\"color\":\"$color_std\"},"
+}
 
 get_lng() {
 	lng=`skb noloop\
@@ -89,11 +92,13 @@ get_time() {
 blocks=(
 	[10]=lng
 	[20]=numlock
-	[30]=cputemp
-	[40]=snd
-	[50]=battlvl
-	[60]=date
-	[70]=time
+	[30]=capslock
+#	[40]=csq
+	[50]=cputemp
+	[60]=snd
+	[70]=battlvl
+	[80]=date
+	[90]=time
 )
 
 unset func_list

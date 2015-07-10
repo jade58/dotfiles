@@ -4,7 +4,7 @@
 hist="$HOME/.i3/dmenu.log"
 
 # font
-fn="DejaVu Mono:size=8"
+fn="Terminus Re33:style=Regular:size=10"
 
 # colors
 nb="#222222"

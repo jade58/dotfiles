@@ -12,7 +12,7 @@ set $alt Mod1
 set $super Mod4
 
 # terminal
-set $term xterm
+set $term uxterm
 
 
 ##
@@ -65,7 +65,7 @@ bindsym $super+d exec ~/.i3/dmenu.sh
 ##
 
 # kill focused window
-bindsym $super+q kill
+bindsym $alt+q kill
 
 # focus tile
 bindsym $super+h focus left
@@ -173,7 +173,7 @@ mode "resize" {
 ##
 
 bar {
-	font				pango:DejaVu Mono 8
+#	font				Xft:Terminus Re33 Regular 13
 	status_command		~/.i3/bar.sh
 	workspace_buttons 	yes
  

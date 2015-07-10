@@ -1,6 +1,3 @@
-rename .png
-rename 2.png
-rename 4.jpg
 rename 5.jpg
 rename 6.jpg
 rename 7.jpg
@@ -42,9 +39,12 @@ search man
 
 shell javap -C Parser.class > Parser.asm
 shell 
-ex
 shell javap -c Parser.class > Parser.asm
 delete
 shell make
 search usr
 open_with 
+search var
+ex
+open_with firefox
+open_with 2
