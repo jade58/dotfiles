@@ -5,7 +5,7 @@ Xft.hinting:			true
 Xft.hintstyle:			hintslight
 
 xterm*utf8Title:		true
-xterm*faceName:			Terminus Re33:style=Regular:size=13
+xterm*faceName:			Terminus Re33:style=Regular:size=12
 xterm*scrollBar:		false
 xterm*eightBitInput:	false
 xterm*metaSendsEscape:	true
