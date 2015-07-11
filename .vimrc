@@ -1,7 +1,3 @@
-" convert one tab to four spaces
-set tabstop=4
-set expandtab
-
 " syntax and color scheme
 sy on
 colorscheme ron

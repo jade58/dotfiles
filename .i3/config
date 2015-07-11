@@ -22,14 +22,14 @@ set $term uxterm
 # set background image
 exec feh --bg-fill ~/Pictures/wall/10.jpg
 
-# x-composition
-# exec xcompmgr
+# compositor
+exec compton --config ~/.compton.conf
 
 # switch keyboard
 exec setxkbmap "us,ru" ",winkeys" "grp:caps_toggle"
 
 # x-resources
-exec xrdb -merge .Xresources
+exec xrdb -merge ~/.Xresources
 
 
 ##
@@ -113,11 +113,8 @@ bindsym $alt+c reload
 # restart i3 inplace
 bindsym $alt+r restart
 
-# lock screen
-bindsym $alt+p exec ~/.i3/lock.sh
-
-# power off
-bindsym $alt+o exec poweroff
+# obshutdown
+bindsym $alt+p exec obshutdown
 
 # exit in i3 # не работает
 # bindsym $alt+e exit
@@ -127,27 +124,49 @@ bindsym $alt+o exec poweroff
 ## workspaces
 ##
 
+workspace 0:ROOT		output PRIMARY_OUTPUT
+workspace 1:TERM		output PRIMARY_OUTPUT
+workspace 2:WWW			output PRIMARY_OUTPUT
+workspace 3:BOOK		output PRIMARY_OUTPUT
+workspace 4:MUSIC		output PRIMARY_OUTPUT
+workspace 5:IDE			output PRIMARY_OUTPUT
+workspace 6:GRAPH		output PRIMARY_OUTPUT
+workspace 7:FILES		output PRIMARY_OUTPUT
+workspace 8:MISC		output PRIMARY_OUTPUT
+# workspace 9:			output PRIMARY_OUTPUT
+
 # switch to workspace
-bindsym $super+1 workspace 1
-bindsym $super+2 workspace 2
-bindsym $super+3 workspace 3
-bindsym $super+4 workspace 4
-bindsym $super+5 workspace 5
-bindsym $super+6 workspace 6
-bindsym $super+7 workspace 7
-bindsym $super+8 workspace 8
+bindsym $super+0 workspace 0:ROOT
+bindsym $super+1 workspace 1:TERM
+bindsym $super+2 workspace 2:WWW
+bindsym $super+3 workspace 3:BOOK
+bindsym $super+4 workspace 4:MUSIC
+bindsym $super+5 workspace 5:IDE
+bindsym $super+6 workspace 6:GRAPH
+bindsym $super+7 workspace 7:FILES
+bindsym $super+8 workspace 8:MISC
 bindsym $super+9 workspace 9
  
 # move focused container to workspace
-bindsym $alt+1 move container to workspace 1
-bindsym $alt+2 move container to workspace 2
-bindsym $alt+3 move container to workspace 3
-bindsym $alt+4 move container to workspace 4
-bindsym $alt+5 move container to workspace 5
-bindsym $alt+6 move container to workspace 6
-bindsym $alt+7 move container to workspace 7
-bindsym $alt+8 move container to workspace 8
+bindsym $alt+0 move container to workspace 0:ROOT
+bindsym $alt+1 move container to workspace 1:TERM
+bindsym $alt+2 move container to workspace 2:WWW
+bindsym $alt+3 move container to workspace 3:BOOK
+bindsym $alt+4 move container to workspace 4:MUSIC
+bindsym $alt+5 move container to workspace 5:IDE
+bindsym $alt+6 move container to workspace 6:GRAPH
+bindsym $alt+7 move container to workspace 7:FILES
+bindsym $alt+8 move container to workspace 8:MISC
 bindsym $alt+9 move container to workspace 9
+
+assign [class="Firefox"]	→ "2:WWW"
+assign [class="Chromium"]	→ "2:WWW"
+assign [class="Qpdfview"]	→ "3:BOOK"
+assign [class="Deadbeef"]	→ "4:MUSIC"
+assign [class="Netbeans"]	→ "5:IDE"
+assign [class="Gimp"]		→ "6:GRAPH"
+assign [class="Pcmanfm"]	→ "7:FILES"
+assign [class="Obshutdown"]	→ "8:MISC"
 
 
 ##

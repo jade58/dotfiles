@@ -1,4 +1,3 @@
-rename 5.jpg
 rename 6.jpg
 rename 7.jpg
 rename 8.png
@@ -48,3 +47,4 @@ search var
 ex
 open_with firefox
 open_with 2
+rename backups
