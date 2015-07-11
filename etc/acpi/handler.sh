@@ -1,6 +1,19 @@
 #!/bin/bash
 
 case "$1" in
+	button/power)
+		case "$2" in
+			PBTN)
+				logger 'power/button PBTN'
+				sudo poweroff
+			;;
+
+			*)
+				logger "power/button $2"
+			;;
+		esac
+	;;
+
 	button/lid)
 		case "$3" in
 			close)
