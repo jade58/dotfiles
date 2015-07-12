@@ -1,17 +1,3 @@
-rename 6.jpg
-rename 7.jpg
-rename 8.png
-rename 9.jpg
-rename 10.jpg
-rename 11.jpg
-rename 12.png
-rename 13.jpg
-mkdir anm
-mkdir noise
-mkdir heavy
-mkdir behemoth
-rename evangelion/
-shell vim spec.txt
 shell vim LICENSE.md
 shell nano LICENSE.md 
 shell mousepad LICENSE.md 
@@ -39,7 +25,6 @@ search man
 shell javap -C Parser.class > Parser.asm
 shell 
 shell javap -c Parser.class > Parser.asm
-delete
 shell make
 search usr
 open_with 
@@ -48,3 +33,18 @@ ex
 open_with firefox
 open_with 2
 rename backups
+shell vim .vimrc
+mkdir archive
+rename archive_11072015
+search html
+search htm
+shell sudo rm hck 
+shell sudo rm hck -rf
+open_with mpv
+open_with ffplay
+shell --ad=lavc:mp3on4float 01\ Ways\ To\ The\ Grave.mp3
+shell --ad=lavc:mp3on4floatggetfattr getfattr 01\ Ways\ To\ The\ Grave.mp3 
+shell --ad=lavc:mp3on4floatggetfattr 01\ Ways\ To\ The\ Grave.mp3 
+shell --ad=lavc:mp3on4floatg01\ Ways\ To\ The\ Grave.mp3 01\ Ways\ To\ The\ Grave.mp3 
+sort date
+delete

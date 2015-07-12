@@ -12,15 +12,18 @@ set $alt Mod1
 set $super Mod4
 
 # terminal
-set $term uxterm
+set $term xterm
 
 
 ##
 ## autostart
 ##
 
+# по умолчанию на 9
+exec i3-msg "workspace 8:MISC"
+
 # set background image
-exec feh --bg-fill ~/Pictures/wall/10.jpg
+exec feh --bg-fill ~/Pictures/wall/9.jpg
 
 # compositor
 exec compton --config ~/.compton.conf
@@ -35,6 +38,8 @@ exec xrdb -merge ~/.Xresources
 ##
 ## configuration
 ##
+
+for_window [class="Obshutdown"] floating enable
 
 # hide title
 new_window pixel 2
@@ -161,12 +166,12 @@ bindsym $alt+9 move container to workspace 9
 
 assign [class="Firefox"]	→ "2:WWW"
 assign [class="Chromium"]	→ "2:WWW"
-assign [class="Qpdfview"]	→ "3:BOOK"
+assign [class="qpdfview"]	→ "3:BOOK"
 assign [class="Deadbeef"]	→ "4:MUSIC"
 assign [class="Netbeans"]	→ "5:IDE"
 assign [class="Gimp"]		→ "6:GRAPH"
 assign [class="Pcmanfm"]	→ "7:FILES"
-assign [class="Obshutdown"]	→ "8:MISC"
+assign [class="Geeqie"]		→ "7:FILES"
 
 
 ##

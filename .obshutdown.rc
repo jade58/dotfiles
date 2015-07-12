@@ -1,24 +1,23 @@
 [general]
-version =        0.1-rc1
-verbose =        flase
-default_action = shutdown
-composite =      true
-theme =          foom
-buttons =        cancel lock suspend shutdown restart
-images =                 true
-relief =                 false
- 
+version=		0.1-rc1
+verbose=		flase
+default_action=	shutdown
+composite=		true
+theme=			foom
+buttons=		cancel lock suspend shutdown restart
+images=			true
+relief=			false
+	
 [actions]
-logout = i3-msg exit
-restart = reboot
-shutdown = poweroff
-lock = /home/kalterfive/.i3/lock.sh
-suspend = sudo pm-suspend
- 
+restart=		reboot
+shutdown=		poweroff
+lock=			/home/kalterfive/.i3/lock.sh
+suspend=		sudo pm-suspend
+	
 [labels]
-cancel =         CANCEL
-logout =         EXIT WM
-restart =        REBOOT
-shutdown =       SHUTDOWN
-lock =           LOCK
-suspend =        SUSPEND
+cancel=			CANCEL
+logout=			EXIT WM
+restart=		REBOOT
+shutdown=		SHUTDOWN
+lock=			LOCK
+suspend=		SUSPEND

@@ -1,38 +1,63 @@
-Xft.dpi:				96
-Xft.antialias:			true
-Xft.rgba:				rgb
-Xft.hinting:			true
-Xft.hintstyle:			hintslight
+Xft.dpi:                96
+Xft.antialias:          true
+Xft.rgba:               rgb
+Xft.hinting:            true
+Xft.hintstyle:          hintslight
 
-xterm*utf8Title:		true
-xterm*faceName:			Terminus Re33:style=Regular:size=12
-xterm*scrollBar:		false
-xterm*eightBitInput:	false
-xterm*metaSendsEscape:	true
-xterm*colorBDMode:		true
-xterm*boldMode:			true
-xterm*alwaysBoldMode:	false
-xterm*dynamicColors:	true
-xterm*colorMode:		true
-xterm*saveLines:		10000
-xterm*visualBell:		false
+xterm*utf8Title:        true
+xterm*faceName:         Terminus Re33:style=Regular:size=12
+xterm*scrollBar:        false
+xterm*eightBitInput:    false
+xterm*metaSendsEscape:  true
+xterm*colorBDMode:      true
+xterm*boldMode:         true
+xterm*alwaysBoldMode:   false
+xterm*dynamicColors:    true
+xterm*colorMode:        true
+xterm*saveLines:        10000
+xterm*visualBell:       false
 
-xterm*background:		#2B2B2B
-xterm*foreground:		#DEDEDE
-xterm*colorUL:			#86a2b0
-xterm*color0:			#2E3436
-xterm*color8:			#555753
-xterm*color1:			#CC0000
-xterm*color9:			#EF2929
-xterm*color2:			#4E9A06
-xterm*color10:			#8AE234
-xterm*color3:			#C4A000
-xterm*color11:			#FCE94F
-xterm*color4:			#3465A4
-xterm*color12:			#729FCF
-xterm*color5:			#75507B
-xterm*color13:			#AD7FA8
-xterm*color6:			#06989A
-xterm*color14:			#34E2E2
-xterm*color7:			#D3D7CF
-xterm*color15:			#EEEEEC
+urxvt.font:             xft:Terminus Re33:style=Regular:size=12
+urxvt.saveLines:        2048
+
+urxvt.cursorBlink:      true
+urxvt.cursorUnderline:  false
+
+urxvt.scrollBar:        false
+
+urxvt.transparent:      false
+urxvt.shading:          5
+
+urxvt.jumpScroll:       true
+urxvt.fastScroll:       true
+urxvt.multiScroll:      true
+
+urxvt.colorMode:        on
+urxvt.boldColors:       on
+urxvt.dynamicColors:    on
+urxvt.colorULMode:      on
+urxvt.underLine:        off
+urxvt.colorBDMode:      on
+urxvt.colorBD:          #8AE234
+
+*letterSpace:           -1
+
+*background:            #2B2B2B
+*foreground:            #DEDEDE
+*colorUL:               #86a2b0
+*color0:                #2E3436
+*color1:                #CC0000
+*color2:                #4E9A06
+*color3:                #C4A000
+*color4:                #3465A4
+*color5:                #75507B
+*color6:                #06989A
+*color7:                #D3D7CF
+*color8:                #555753
+*color9:                #EF2929
+*color10:               #8AE234
+*color11:               #FCE94F
+*color12:               #729FCF
+*color13:               #AD7FA8
+*color14:               #34E2E2
+*color15:               #EEEEEC

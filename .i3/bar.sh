@@ -3,7 +3,6 @@
 color_std="#cccccc"
 color_waring="#cc0000"
 
-# костыль же, ну!
 echo 3000 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
 
 get_brg() {

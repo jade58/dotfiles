@@ -1,3 +1,6 @@
+set exrc
+set secure
+
 " syntax and color scheme
 sy on
 colorscheme ron
