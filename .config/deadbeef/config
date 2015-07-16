@@ -17,7 +17,7 @@ converter.output_folder /home/kalterfive
 converter.output_format 0
 converter.overwrite_action 0
 deadbeef_version 0.6.2
-filechooser.lastdir file:///home/kalterfive/music/metal/cult%20of%20luna
+filechooser.lastdir file:///home/kalterfive/music/alt
 global_preamp 0.0000000
 gtkui.autoresize_columns 0
 gtkui.embolden_current_track 1
@@ -47,7 +47,7 @@ hotkeys_created 1
 ignore_archives 1
 junk.enable_cp1251_detection 0
 junk.enable_cp936_detection 0
-mainwin.geometry.h 745
+mainwin.geometry.h 744
 mainwin.geometry.maximized 0
 mainwin.geometry.w 1362
 mainwin.geometry.x 0
@@ -103,33 +103,33 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "Artist" "%a" -1 168 0
 playlist.column.02 "№" "%n" -1 37 1
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 17
-playlist.cursor.0 7
+playlist.current 12
+playlist.cursor.0 1
 playlist.cursor.1 8
-playlist.cursor.10 7
+playlist.cursor.10 8
 playlist.cursor.11 0
-playlist.cursor.12 0
-playlist.cursor.13 3
+playlist.cursor.12 1
+playlist.cursor.13 0
 playlist.cursor.14 0
-playlist.cursor.15 3
+playlist.cursor.15 7
 playlist.cursor.16 1
-playlist.cursor.17 10
+playlist.cursor.17 3
 playlist.cursor.18 0
-playlist.cursor.19 1
+playlist.cursor.19 0
 playlist.cursor.2 8
-playlist.cursor.20 0
-playlist.cursor.21 1
-playlist.cursor.22 14
+playlist.cursor.20 5
+playlist.cursor.21 0
+playlist.cursor.22 0
 playlist.cursor.23 0
 playlist.cursor.24 5
 playlist.cursor.25 0
 playlist.cursor.3 9
 playlist.cursor.4 0
-playlist.cursor.5 0
-playlist.cursor.6 0
-playlist.cursor.7 7
-playlist.cursor.8 14
-playlist.cursor.9 12
+playlist.cursor.5 5
+playlist.cursor.6 5
+playlist.cursor.7 0
+playlist.cursor.8 15
+playlist.cursor.9 0
 playlist.scroll.0 0
 playlist.scroll.1 0
 playlist.scroll.10 0
@@ -188,7 +188,7 @@ replaygain_mode 2
 replaygain_preamp 0.0000000
 replaygain_scale 1
 resume.paused 0
-resume.playlist 17
+resume.playlist 12
 resume.position -1.000000
 resume.track -1
 searchwin.geometry.h 150

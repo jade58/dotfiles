@@ -1,24 +1,31 @@
 #!/usr/bin/env bash
 
+
 color_std="#cccccc"
 color_waring="#cc0000"
 
-echo 3000 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
 
 get_brg() {
 	brg=`cat /sys/class/backlight/intel_backlight/brightness`
 	brg_max=`cat /sys/class/backlight/intel_backlight/max_brightness`
-	brg_lvl=`echo "scale=2; $brg/$brg_max*100"\
+	brg_lvl=`echo "scale = 2; $brg / $brg_max * 100"\
 			| bc\
 			| sed -r 's/\..+//'`
 
 	brg="{\"full_text\":\" BRG: $brg_lvl% \",\"color\":\"$color_std\"},"
 }
 
+
+init_csq() {
+	/bin/sudo killall csq.sh
+	/bin/sudo $HOME/.i3/csq.sh "/dev/ttyUSB2" &
+}
+
 get_csq() {
 	csq=`cat /tmp/csq.txt`
 	csq="{\"full_text\":\" CSQ: $csq% \",\"color\":\"$color_std\"},"
 }
+
 
 get_capslock() {
 	capslock=`xset q\
@@ -29,6 +36,7 @@ get_capslock() {
 	capslock="{\"full_text\":\" CPS: $capslock \",\"color\":\"$color_std\"},"
 }
 
+
 get_lng() {
 	lng=`skb noloop\
 			| head -c 2\
@@ -36,6 +44,7 @@ get_lng() {
 
 	lng="{\"full_text\":\" $lng \",\"color\":\"$color_std\"},"
 }
+
 
 get_numlock() {
 	numlock=`xset q\
@@ -46,10 +55,29 @@ get_numlock() {
 	numlock="{\"full_text\":\" NUM: $numlock \",\"color\":\"$color_std\"},"
 }
 
+
 get_cputemp() {
-	cputemp=`$HOME/.i3/cputemp.sh`
-	cputemp="{\"full_text\":\" $cputemp°C \",\"color\":\"$color_std\"},"
+	sensors=`sensors\
+			| grep Core\
+			| sed 's/\..*//g;s/.*+//g'`
+
+	cputemp=0
+
+	for core in $sensors; do
+		cputemp=$(($cputemp + $core))
+	done
+
+	# у меня 4 ядра
+	cputemp=$(($cputemp / 4))
+
+	cputemp_color=$color_std
+	if (( "$cputemp" >= "70" )); then
+		cputemp_color=$color_waring
+	fi
+
+	cputemp="{\"full_text\":\" CPU: $cputemp°C \",\"color\":\"$cputemp_color\"},"
 }
+
 
 get_snd() {
 	sndlvl=`amixer get Master\
@@ -64,29 +92,30 @@ get_snd() {
 	snd="{\"full_text\":\" SND$snd_state: $sndlvl \",\"color\":\"$color_std\"},"
 }
 
+
 get_battlvl() {
 	battlvl=`cat /sys/class/power_supply/BAT0/capacity`
+
+	batt_color=$color_std
 	if (( "$battlvl" <= "10" )); then
 		batt_color=$color_waring
-	else
-		batt_color=$color_std
 	fi
 
 	battlvl="{\"full_text\":\" BAT: $battlvl% \",\"color\":\"$batt_color\"},"
 }
+
 
 get_date() {
 	date=`date +%d.%m.%Y`
 	date="{\"full_text\":\" $date \",\"color\":\"$color_std\"},"
 }
 
+
 get_time() {
 	time=`date +%H:%M:%S`
 	time="{\"full_text\":\" $time \", \"color\":\"$color_std\"}"
 }
 
-# /bin/sudo killall csq.sh
-# /bin/sudo ~/.i3/csq.sh &
 
 blocks=(
 	[10]=lng
@@ -94,21 +123,25 @@ blocks=(
 	[30]=capslock
 #	[40]=csq
 	[50]=cputemp
-	[60]=snd
-	[70]=battlvl
-	[80]=date
-	[90]=time
+#	[60]=brg
+	[70]=snd
+	[80]=battlvl
+	[90]=date
+	[100]=time
 )
 
 unset func_list
 bar='['
 for block in ${blocks[@]}; do
+	init_$block 2> /dev/null
 	func_list+=" get_$block"
 	bar+='${'$block':-}'
 done
 bar+="],"
 
-echo '{"version":1}[' && while [ 1 ]; do
+
+echo '{"version":1}['
+while [ 1 ]; do
 	for func in $func_list; do
 		$func
 	done
