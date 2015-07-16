@@ -26,6 +26,7 @@ bindkey -v
 zstyle :compinstall filename '/home/kalterfive/.zshrc'
  
 alias sysinf='alsi -n'
+alias grp='grep'
 alias l='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -l'
