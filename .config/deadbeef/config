@@ -103,7 +103,7 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "Artist" "%a" -1 168 0
 playlist.column.02 "№" "%n" -1 37 1
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 12
+playlist.current 5
 playlist.cursor.0 1
 playlist.cursor.1 8
 playlist.cursor.10 8

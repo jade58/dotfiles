@@ -106,7 +106,9 @@ get_battlvl() {
 
 
 get_date() {
-	date=`date +%d.%m.%Y`
+	date=`date +%a\ %d.%m.%Y\
+			| tr a-z A-Z`
+
 	date="{\"full_text\":\" $date \",\"color\":\"$color_std\"},"
 }
 
@@ -120,7 +122,7 @@ get_time() {
 blocks=(
 	[10]=lng
 	[20]=numlock
-	[30]=capslock
+#	[30]=capslock
 #	[40]=csq
 	[50]=cputemp
 #	[60]=brg

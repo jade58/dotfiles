@@ -141,28 +141,73 @@ workspace 8:MISC		output PRIMARY_OUTPUT
 # workspace 9:			output PRIMARY_OUTPUT
 
 # switch to workspace
-bindsym $super+0 workspace 0:ROOT
-bindsym $super+1 workspace 1:TERM
-bindsym $super+2 workspace 2:WWW
-bindsym $super+3 workspace 3:BOOK
-bindsym $super+4 workspace 4:MUSIC
-bindsym $super+5 workspace 5:IDE
-bindsym $super+6 workspace 6:GRAPH
-bindsym $super+7 workspace 7:FILES
-bindsym $super+8 workspace 8:MISC
-bindsym $super+9 workspace 9
+bindcode $super+86 workspace next
+bindcode $super+82 workspace prev
+
+bindsym  $super+0  workspace 0:ROOT
+bindcode $super+90 workspace 0:ROOT
+
+bindsym  $super+1  workspace 1:TERM
+bindcode $super+87 workspace 1:TERM
+
+bindsym  $super+2  workspace 2:WWW
+bindcode $super+88 workspace 2:WWW
+
+bindsym  $super+3  workspace 3:BOOK
+bindcode $super+89 workspace 3:BOOK
+
+bindsym  $super+4  workspace 4:MUSIC
+bindcode $super+83 workspace 4:MUSIC
+
+bindsym  $super+5  workspace 5:IDE
+bindcode $super+84 workspace 5:IDE
+
+bindsym  $super+6  workspace 6:GRAPH
+bindcode $super+85 workspace 6:GRAPH
+
+bindsym  $super+7  workspace 7:FILES
+bindcode $super+79 workspace 7:FILES
+
+bindsym  $super+8  workspace 8:MISC
+bindcode $super+80 workspace 8:MISC
+
+bindsym  $super+9  workspace 9
+bindcode $super+81 workspace 9
  
 # move focused container to workspace
-bindsym $alt+0 move container to workspace 0:ROOT
-bindsym $alt+1 move container to workspace 1:TERM
-bindsym $alt+2 move container to workspace 2:WWW
-bindsym $alt+3 move container to workspace 3:BOOK
-bindsym $alt+4 move container to workspace 4:MUSIC
-bindsym $alt+5 move container to workspace 5:IDE
-bindsym $alt+6 move container to workspace 6:GRAPH
-bindsym $alt+7 move container to workspace 7:FILES
-bindsym $alt+8 move container to workspace 8:MISC
-bindsym $alt+9 move container to workspace 9
+bindcode $alt+86 move container to workspace next
+bindcode $alt+82 move container to workspace prev
+
+bindsym  $alt+0  move container to workspace 0:ROOT
+bindcode $alt+90 move container to workspace 0:ROOT
+
+bindsym  $alt+1  move container to workspace 1:TERM
+bindcode $alt+87 move container to workspace 1:TERM
+
+bindsym  $alt+2  move container to workspace 2:WWW
+bindcode $alt+88 move container to workspace 2:WWW
+
+bindsym  $alt+3  move container to workspace 3:BOOK
+bindcode $alt+89 move container to workspace 3:BOOK
+
+bindsym  $alt+4  move container to workspace 4:MUSIC
+bindcode $alt+83 move container to workspace 4:MUSIC
+
+bindsym  $alt+5  move container to workspace 5:IDE
+bindcode $alt+84 move container to workspace 5:IDE
+
+bindsym  $alt+6  move container to workspace 6:GRAPH
+bindcode $alt+85 move container to workspace 6:GRAPH
+
+bindsym  $alt+7  move container to workspace 7:FILES
+bindcode $alt+79 move container to workspace 7:FILES
+
+bindsym  $alt+8  move container to workspace 8:MISC
+bindcode $alt+80 move container to workspace 8:MISC
+
+bindsym  $alt+9  move container to workspace 9
+bindcode $alt+81 move container to workspace 9
+
 
 assign [class="Firefox"]	→ "2:WWW"
 assign [class="Chromium"]	→ "2:WWW"
@@ -197,7 +242,6 @@ mode "resize" {
 ##
 
 bar {
-#	font				pango:aller regular 10
 	font				pango:dejavu sans 9
 	status_command		~/.i3/bar.sh
 	workspace_buttons 	yes
