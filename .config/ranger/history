@@ -1,23 +1,4 @@
-rename indians.mp3
-rename 19.jpg
-search man
-shell javap -C Parser.class > Parser.asm
-shell javap -c Parser.class > Parser.asm
-shell make
-search usr
-open_with 
-search var
-open_with firefox
-open_with 2
-rename backups
-shell vim .vimrc
-mkdir archive
-rename archive_11072015
-search html
-search htm
-shell sudo rm hck 
 shell sudo rm hck -rf
-open_with mpv
 open_with ffplay
 shell --ad=lavc:mp3on4float 01\ Ways\ To\ The\ Grave.mp3
 shell --ad=lavc:mp3on4floatggetfattr getfattr 01\ Ways\ To\ The\ Grave.mp3 
@@ -31,7 +12,6 @@ shell
 shell f
 open_with f 0
 open_with w3m
-open_with t
 shell vim notify.py
 shell vim beep.pl
 shell vim laal.py
@@ -42,9 +22,29 @@ search .wee
 search ico
 shell rm -rf %s 
 shell sudo rm -rf %s 
-open_with vim
-
 shell tar xvf *.tar.gz
-ex
-delete
 shell mkdir fonts
+rename snd.wav
+search snd
+open_with mousepad t
+open_with 16
+search diar
+shell tar cvf DCIM.tar DCIM/
+mkdir septic flash
+rename septic flesh
+rename the great mass
+search dow
+mkdir opeth
+ex
+rename ghost reveries
+rename colors
+open_with mpv
+rename Opeth - Hessian Peel.webm
+rename Opeth - Eternal Rains Will Come.mp4
+rename Opeth - Live @ Rock am Ring 2014.mp4
+mkdir videos
+search ope
+open_with t
+open_with vim
+delete
+
