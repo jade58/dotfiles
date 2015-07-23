@@ -25,11 +25,14 @@ exec xrdb -merge ~/.Xresources
 # switch keyboard
 exec setxkbmap "us,ru" ",winkeys" "grp:caps_toggle"
 
-# comptoser
+# composer
 exec compton --config ~/.compton.conf
 
 # set background image
-exec feh --bg-fill ~/Pictures/wall/9.jpg
+exec feh --bg-fill ~/Pictures/wall/21.jpg
+
+# notification
+exec ~/.i3/dunst.sh
 
 
 ##
@@ -45,7 +48,7 @@ for_window [class="Obshutdown"] floating enable
 new_window pixel 2
 
 # font for window titles
-font pango:DejaVu Mono 8
+font pango:DejaVu Sans 8
 
 
 ##
@@ -55,7 +58,7 @@ font pango:DejaVu Mono 8
 floating_modifier $super
 
 # screenshooter
-bindsym Print exec scrot '%Y%m%d%H%M%S.png' -e 'mv $f ~/Pictures/scr/'
+bindsym Print exec import -window root ~/Pictures/scr/`date +%d%m%y%H%M%S`.png
 
 # start a terminal
 bindsym $super+Return exec $term
@@ -129,88 +132,74 @@ bindsym $alt+p exec obshutdown
 ## workspaces
 ##
 
-workspace 0:ROOT		output PRIMARY_OUTPUT
-workspace 1:TERM		output PRIMARY_OUTPUT
-workspace 2:WWW			output PRIMARY_OUTPUT
-workspace 3:BOOK		output PRIMARY_OUTPUT
-workspace 4:MUSIC		output PRIMARY_OUTPUT
-workspace 5:IDE			output PRIMARY_OUTPUT
-workspace 6:GRAPH		output PRIMARY_OUTPUT
-workspace 7:FILES		output PRIMARY_OUTPUT
-workspace 8:MISC		output PRIMARY_OUTPUT
-# workspace 9:			output PRIMARY_OUTPUT
-
-# switch to workspace
-bindcode $super+86 workspace next
-bindcode $super+82 workspace prev
-
-bindsym  $super+0  workspace 0:ROOT
+workspace 0:ROOT output PRIMARY_OUTPUT
+bindsym $super+0 workspace 0:ROOT
+bindsym $alt+0 move container to workspace 0:ROOT
 bindcode $super+90 workspace 0:ROOT
+bindcode $alt+90 move container to workspace 0:ROOT
 
-bindsym  $super+1  workspace 1:TERM
+workspace 1:TERM output PRIMARY_OUTPUT
+bindsym $super+1 workspace 1:TERM
+bindsym $alt+1 move container to workspace 1:TERM
 bindcode $super+87 workspace 1:TERM
+bindcode $alt+87 move container to workspace 1:TERM
 
-bindsym  $super+2  workspace 2:WWW
-bindcode $super+88 workspace 2:WWW
+workspace 2:WEB	output PRIMARY_OUTPUT
+bindsym $super+2 workspace 2:WEB
+bindsym $alt+2 move container to workspace 2:WEB
+bindcode $super+88 workspace 2:WEB
+bindcode $alt+88 move container to workspace 2:WEB
 
-bindsym  $super+3  workspace 3:BOOK
+workspace 3:BOOK output PRIMARY_OUTPUT
+bindsym $super+3 workspace 3:BOOK
+bindsym $alt+3 move container to workspace 3:BOOK
 bindcode $super+89 workspace 3:BOOK
+bindcode $alt+89 move container to workspace 3:BOOK
 
-bindsym  $super+4  workspace 4:MUSIC
+workspace 4:MUSIC output PRIMARY_OUTPUT
+bindsym $super+4 workspace 4:MUSIC
+bindsym $alt+4 move container to workspace 4:MUSIC
 bindcode $super+83 workspace 4:MUSIC
+bindcode $alt+83 move container to workspace 4:MUSIC
 
-bindsym  $super+5  workspace 5:IDE
+workspace 5:IDE	output PRIMARY_OUTPUT
+bindsym $super+5 workspace 5:IDE
+bindsym $alt+5 move container to workspace 5:IDE
 bindcode $super+84 workspace 5:IDE
+bindcode $alt+84 move container to workspace 5:IDE
 
-bindsym  $super+6  workspace 6:GRAPH
+workspace 6:GRAPH output PRIMARY_OUTPUT
+bindsym $super+6 workspace 6:GRAPH
+bindsym $alt+6 move container to workspace 6:GRAPH
 bindcode $super+85 workspace 6:GRAPH
+bindcode $alt+85 move container to workspace 6:GRAPH
 
-bindsym  $super+7  workspace 7:FILES
+workspace 7:FILES output PRIMARY_OUTPUT
+bindsym $super+7 workspace 7:FILES
+bindsym $alt+7 move container to workspace 7:FILES
 bindcode $super+79 workspace 7:FILES
+bindcode $alt+79 move container to workspace 7:FILES
 
-bindsym  $super+8  workspace 8:MISC
+workspace 8:MISC output PRIMARY_OUTPUT
+bindsym $super+8 workspace 8:MISC
+bindsym $alt+8 move container to workspace 8:MISC
 bindcode $super+80 workspace 8:MISC
+bindcode $alt+80 move container to workspace 8:MISC
 
+#workspace 9: output PRIMARY_OUTPUT
 bindsym  $super+9  workspace 9
 bindcode $super+81 workspace 9
- 
-# move focused container to workspace
+bindsym $alt+9 move container to workspace 9
+bindcode $alt+81 move container to workspace 9
+
+bindcode $super+86 workspace next
+bindcode $super+82 workspace prev
 bindcode $alt+86 move container to workspace next
 bindcode $alt+82 move container to workspace prev
 
-bindsym  $alt+0  move container to workspace 0:ROOT
-bindcode $alt+90 move container to workspace 0:ROOT
-
-bindsym  $alt+1  move container to workspace 1:TERM
-bindcode $alt+87 move container to workspace 1:TERM
-
-bindsym  $alt+2  move container to workspace 2:WWW
-bindcode $alt+88 move container to workspace 2:WWW
-
-bindsym  $alt+3  move container to workspace 3:BOOK
-bindcode $alt+89 move container to workspace 3:BOOK
-
-bindsym  $alt+4  move container to workspace 4:MUSIC
-bindcode $alt+83 move container to workspace 4:MUSIC
-
-bindsym  $alt+5  move container to workspace 5:IDE
-bindcode $alt+84 move container to workspace 5:IDE
-
-bindsym  $alt+6  move container to workspace 6:GRAPH
-bindcode $alt+85 move container to workspace 6:GRAPH
-
-bindsym  $alt+7  move container to workspace 7:FILES
-bindcode $alt+79 move container to workspace 7:FILES
-
-bindsym  $alt+8  move container to workspace 8:MISC
-bindcode $alt+80 move container to workspace 8:MISC
-
-bindsym  $alt+9  move container to workspace 9
-bindcode $alt+81 move container to workspace 9
-
-
-assign [class="Firefox"]	→ "2:WWW"
-assign [class="Chromium"]	→ "2:WWW"
+assign [class="Firefox"]	→ "2:WEB"
+assign [class="Chromium"]	→ "2:WEB"
+assign [class="utox"]		→ "2:WEB"
 assign [class="qpdfview"]	→ "3:BOOK"
 assign [class="Deadbeef"]	→ "4:MUSIC"
 assign [class="Netbeans"]	→ "5:IDE"
@@ -226,10 +215,10 @@ assign [class="Geeqie"]		→ "7:FILES"
 bindsym $super+r mode "resize"
 
 mode "resize" {
-	bindsym H resize shrink width 10 px or 10 ppt
-	bindsym K resize grow height 10 px or 10 ppt
-	bindsym J resize shrink height 10 px or 10 ppt
-	bindsym L resize grow width 10 px or 10 ppt
+	bindsym H resize shrink width 5 px or 5 ppt
+	bindsym K resize grow height 5 px or 5 ppt
+	bindsym J resize shrink height 5 px or 5 ppt
+	bindsym L resize grow width 5 px or 5 ppt
  
 	# back to normal
 	bindsym Return mode "default"
@@ -242,9 +231,12 @@ mode "resize" {
 ##
 
 bar {
-	font				pango:dejavu sans 9
-	status_command		~/.i3/bar.sh
-	workspace_buttons 	yes
+	strip_workspace_numbers	yes
+	font					pango:dejavu sans 9
+	status_command			~/.i3/bar.sh
+	workspace_buttons 		yes
+	tray_output				none
+	separator_symbol		"|"
  
 	colors {
 		background	#0e0e0e

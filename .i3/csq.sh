@@ -19,5 +19,5 @@ while [ 1 ]; do
 	fi
 
 	echo $csq > /tmp/csq.txt
-	sleep 1
+	sleep 5
 done
