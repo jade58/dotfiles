@@ -201,17 +201,17 @@ get_battary_level() {
 	color1='"icon_color":"'$battary_color1'"'
 
 	case "$battary_level" in
-		[0-9])  icon_battary=$icon_battary_0   ;;
-		1[0-9]) icon_battary=$icon_battary_10  ;;
-		2[0-9]) icon_battary=$icon_battary_20  ;;
-		3[0-9]) icon_battary=$icon_battary_30  ;;
-		4[0-9]) icon_battary=$icon_battary_40  ;;
-		5[0-9]) icon_battary=$icon_battary_50  ;;
-		6[0-9]) icon_battary=$icon_battary_60  ;;
-		7[0-9]) icon_battary=$icon_battary_70  ;;
-		8[0-9]) icon_battary=$icon_battary_80  ;;
-		9[0-9]) icon_battary=$icon_battary_90  ;;
-		100)    icon_battary=$icon_battary_100 ;;
+		[0-5])           icon_battary=$icon_battary_0   ;;
+		[6-9] | 1[0-5])  icon_battary=$icon_battary_10  ;;
+		1[6-9] | 2[0-5]) icon_battary=$icon_battary_20  ;;
+		2[6-9] | 3[0-5]) icon_battary=$icon_battary_30  ;;
+		3[6-9] | 4[0-5]) icon_battary=$icon_battary_40  ;;
+		4[6-9] | 5[0-5]) icon_battary=$icon_battary_50  ;;
+		5[6-9] | 6[0-5]) icon_battary=$icon_battary_60  ;;
+		6[6-9] | 7[0-5]) icon_battary=$icon_battary_70  ;;
+		7[6-9] | 8[0-5]) icon_battary=$icon_battary_80  ;;
+		8[6-9] | 9[0-5]) icon_battary=$icon_battary_90  ;;
+		9[6-9] | 100)    icon_battary=$icon_battary_100 ;;
 	esac
 
 	battary_level='{'$full_text','$color0','$icon_battary','$color1'},'
