@@ -1,0 +1,251 @@
+##
+## i3 config
+##
+
+
+##
+## variables
+##
+
+# mod-key
+set $alt Mod1
+set $super Mod4
+
+# terminal
+set $term uxterm
+
+
+##
+## autostart
+##
+
+# x-resources
+exec xrdb -merge ~/.config/xres
+
+# switch keyboard
+exec setxkbmap "us,ru" ",winkeys" "grp:caps_toggle"
+
+# composer
+exec compton --config ~/.config/compton.conf
+
+# set background image
+exec feh --no-fehbg --bg-fill ~/Pictures/wall/21.jpg
+
+# notification
+exec ~/.config/dunst
+
+
+##
+## configuration
+##
+
+# по умолчанию на 9 воркспейс
+exec i3-msg "workspace 8:MISC"
+
+for_window [class="Obshutdown"] floating enable
+
+# hide title
+new_window pixel 2
+
+# font for window titles
+font pango:DejaVu Sans 8
+
+
+##
+## keys
+##
+
+floating_modifier $super
+
+# screenshooter
+bindsym Print exec import -window root ~/Pictures/scr/`date +%d%m%y%H%M%S`.png
+
+# start a terminal
+bindsym $super+Return exec $term
+bindsym $super+t exec $term
+ 
+# start dmenu (a program launcher)
+bindsym $super+d exec ~/bin/dmenu
+
+
+##
+## tiles
+##
+
+# kill focused window
+bindsym $alt+q kill
+
+# focus tile
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
+ 
+# move focused window
+bindsym $alt+h move left
+bindsym $alt+k move up
+bindsym $alt+j move down
+bindsym $alt+l move right
+ 
+# split in horizontal orientation
+bindsym $super+g split h
+ 
+# split in vertical orientation
+bindsym $super+v split v
+ 
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+ 
+# change container layout (stacked, tabbed, toggle split)
+bindsym $super+s layout stacking
+bindsym $super+w layout tabbed
+bindsym $super+e layout toggle split
+ 
+# toggle tiling / floating
+bindsym $alt+space floating toggle
+ 
+# change focus between tiling / floating windows
+bindsym $super+space focus mode_toggle
+ 
+# focus the parent container
+bindsym $super+a focus parent
+
+
+##
+## power control buttons
+##
+
+# reload the configuration file
+bindsym $alt+c reload
+ 
+# restart i3 inplace
+bindsym $alt+r restart
+
+# obshutdown
+bindsym $alt+p exec obshutdown -c ~/.config/obshutdown.rc
+
+# exit in i3 # не работает
+# bindsym $alt+e exit
+
+
+##
+## workspaces
+##
+
+workspace 0:ROOT output PRIMARY_OUTPUT
+bindsym $super+0 workspace 0:ROOT
+bindsym $alt+0 move container to workspace 0:ROOT
+bindcode $super+90 workspace 0:ROOT
+bindcode $alt+90 move container to workspace 0:ROOT
+
+workspace 1:TERM output PRIMARY_OUTPUT
+bindsym $super+1 workspace 1:TERM
+bindsym $alt+1 move container to workspace 1:TERM
+bindcode $super+87 workspace 1:TERM
+bindcode $alt+87 move container to workspace 1:TERM
+
+workspace 2:WEB	output PRIMARY_OUTPUT
+bindsym $super+2 workspace 2:WEB
+bindsym $alt+2 move container to workspace 2:WEB
+bindcode $super+88 workspace 2:WEB
+bindcode $alt+88 move container to workspace 2:WEB
+
+workspace 3:BOOK output PRIMARY_OUTPUT
+bindsym $super+3 workspace 3:BOOK
+bindsym $alt+3 move container to workspace 3:BOOK
+bindcode $super+89 workspace 3:BOOK
+bindcode $alt+89 move container to workspace 3:BOOK
+
+workspace 4:MUSIC output PRIMARY_OUTPUT
+bindsym $super+4 workspace 4:MUSIC
+bindsym $alt+4 move container to workspace 4:MUSIC
+bindcode $super+83 workspace 4:MUSIC
+bindcode $alt+83 move container to workspace 4:MUSIC
+
+workspace 5:IDE	output PRIMARY_OUTPUT
+bindsym $super+5 workspace 5:IDE
+bindsym $alt+5 move container to workspace 5:IDE
+bindcode $super+84 workspace 5:IDE
+bindcode $alt+84 move container to workspace 5:IDE
+
+workspace 6:GRAPH output PRIMARY_OUTPUT
+bindsym $super+6 workspace 6:GRAPH
+bindsym $alt+6 move container to workspace 6:GRAPH
+bindcode $super+85 workspace 6:GRAPH
+bindcode $alt+85 move container to workspace 6:GRAPH
+
+workspace 7:FILES output PRIMARY_OUTPUT
+bindsym $super+7 workspace 7:FILES
+bindsym $alt+7 move container to workspace 7:FILES
+bindcode $super+79 workspace 7:FILES
+bindcode $alt+79 move container to workspace 7:FILES
+
+workspace 8:MISC output PRIMARY_OUTPUT
+bindsym $super+8 workspace 8:MISC
+bindsym $alt+8 move container to workspace 8:MISC
+bindcode $super+80 workspace 8:MISC
+bindcode $alt+80 move container to workspace 8:MISC
+
+#workspace 9: output PRIMARY_OUTPUT
+bindsym  $super+9  workspace 9
+bindcode $super+81 workspace 9
+bindsym $alt+9 move container to workspace 9
+bindcode $alt+81 move container to workspace 9
+
+bindcode $super+86 workspace next
+bindcode $super+82 workspace prev
+bindcode $alt+86 move container to workspace next
+bindcode $alt+82 move container to workspace prev
+
+assign [class="Firefox"]	→ "2:WEB"
+assign [class="Chromium"]	→ "2:WEB"
+assign [class="utox"]		→ "2:WEB"
+assign [class="qpdfview"]	→ "3:BOOK"
+assign [class="Deadbeef"]	→ "4:MUSIC"
+assign [class="Netbeans"]	→ "5:IDE"
+assign [class="Gimp"]		→ "6:GRAPH"
+assign [class="Pcmanfm"]	→ "7:FILES"
+assign [class="Geeqie"]		→ "7:FILES"
+
+
+##
+## resize
+##
+
+bindsym $super+r mode "resize"
+
+mode "resize" {
+	bindsym H resize shrink width 5 px or 5 ppt
+	bindsym K resize grow height 5 px or 5 ppt
+	bindsym J resize shrink height 5 px or 5 ppt
+	bindsym L resize grow width 5 px or 5 ppt
+ 
+	# back to normal
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+} 
+ 
+
+##
+## bar
+##
+
+bar {
+	strip_workspace_numbers	yes
+	font					pango:dejavu sans 9
+	status_command			~/.config/i3/bar.sh
+	workspace_buttons 		yes
+	tray_output				none
+	separator_symbol		" | "
+	i3bar_command			/usr/bin/i3bar-icons
+ 
+	colors {
+		background	#0e0e0e
+		statusline	#999999
+
+		focused_workspace	#cccccc #444444 #cccccc
+		active_workspace	#cccccc #444444 
+		inactive_workspace	#cccccc #0e0e0e 
+		urgent_workspace	#cccccc #D15452  
+	}
+}

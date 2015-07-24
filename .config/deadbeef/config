@@ -103,29 +103,29 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "Artist" "%a" -1 168 0
 playlist.column.02 "№" "%n" -1 37 1
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 5
+playlist.current 11
 playlist.cursor.0 1
 playlist.cursor.1 8
 playlist.cursor.10 8
-playlist.cursor.11 0
+playlist.cursor.11 3
 playlist.cursor.12 8
 playlist.cursor.13 0
 playlist.cursor.14 0
 playlist.cursor.15 7
 playlist.cursor.16 0
-playlist.cursor.17 4
+playlist.cursor.17 10
 playlist.cursor.18 0
 playlist.cursor.19 0
 playlist.cursor.2 8
 playlist.cursor.20 5
-playlist.cursor.21 9
-playlist.cursor.22 3
-playlist.cursor.23 6
+playlist.cursor.21 0
+playlist.cursor.22 9
+playlist.cursor.23 2
 playlist.cursor.24 5
 playlist.cursor.25 0
 playlist.cursor.3 9
 playlist.cursor.4 0
-playlist.cursor.5 1
+playlist.cursor.5 8
 playlist.cursor.6 0
 playlist.cursor.7 0
 playlist.cursor.8 15
@@ -189,9 +189,9 @@ replaygain_mode 2
 replaygain_preamp 0.0000000
 replaygain_scale 1
 resume.paused 0
-resume.playlist 23
-resume.position 607.22454
-resume.track 6
+resume.playlist 11
+resume.position 140.08990
+resume.track 3
 searchwin.geometry.h 150
 searchwin.geometry.w 450
 searchwin.geometry.x 733

@@ -1,4 +1,4 @@
-PATH=$PATH":/home/kalterfive/scripts"
+PATH=$PATH":/home/kalterfive/bin"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)

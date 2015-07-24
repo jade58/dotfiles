@@ -1,0 +1,48 @@
+#!/bin/sh
+
+killall /usr/bin/dunst
+
+fn='Terminus Re33'
+
+format='%s\n%b'
+
+transparency=25
+
+align="left"
+
+scrw=`xdpyinfo | awk '/dimensions/ {sub(/x.*/, "", $2); print $2}'`
+width=240
+posx=$(($scrw-$width))
+posy=10
+geometry=$width"x0+$posx+$posy"
+
+# remove [all] notification by pressing key
+key='ctrl+space'
+all_key='ctrl+shift+space'
+history_key='ctrl+p'
+
+# low bg / fg, timeout
+lb=#dedede
+lf=#2b2b2b
+lto=5
+
+# normal bg / fg, timeout
+nb=#dedede
+nf=#2b2b2b
+nto=10
+
+# critical bg, fg, timeout
+cb=#dedede
+cf=#2b2b2b
+cto=15
+
+dunst -fn "$fn"\
+		-lb $lb -lf $lf -lto $lto\
+		-nb $nb -nf $nf -nto $nto\
+		-cb $cb -cf $cf -cto $cto\
+		-key $key -all_key $all_key -history_key $history_key\
+		-format "$format"\
+		-geometry "$geometry"\
+		-transparency $transparency\
+		-align $align\
+		-ns -sticky_history -word_wrap

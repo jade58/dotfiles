@@ -1,6 +1,3 @@
-set exrc
-set secure
-
 " syntax and color scheme
 sy on
 colorscheme ron
@@ -35,3 +32,6 @@ map <F6> :tabnext <CR>
 " new tab
 imap <F4> <Esc>:browse tabnew<CR>
 map <F4> <Esc>:browse tabnew<CR>
+
+set laststatus=2
+set statusline=enc:%{&enc}\ ff:%{&ff}\ fenc:%{&fenc}%=(chhex:%2B)\ col:%2c\ row:%2l/%L

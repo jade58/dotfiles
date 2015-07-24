@@ -1,1 +1,1 @@
-i3
+i3 -c ~/.config/i3/config
