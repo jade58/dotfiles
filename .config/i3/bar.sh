@@ -121,12 +121,14 @@ get_capslock() {
 	## JSON output
 	full_text='"full_text":"'$capslock'"'
 
-	color0='"color":"'$color_std'"'
 	if [ "$capslock" == "ON" ]; then
+		color0=$color_waring
 		color1=$color_waring
 	else
+		color0=$color_std
 		color1=$color_white
 	fi
+	color0='"color":"'$color0'"'
 	color1='"icon_color":"'$color1'"'
 
 	capslock='{'$full_text','$color0','$icon_capslock','$color1'},'
