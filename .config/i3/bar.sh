@@ -20,21 +20,24 @@ color_danger='#CC0000'
 
 #	{{{ Icons
 
-iconpath=$HOME'/.config/i3/icons'
+iconbyname() {
+	echo '"icon":"'$HOME/.config/i3/icons/$1'.xbm"'
+}
 
-icon_kernel='"icon":"'$iconpath/arch.xbm'"'
-icon_sound_on='"icon":"'$iconpath/sound_on.xbm'"'
-icon_sound_off='"icon":"'$iconpath/sound_off.xbm'"'
-icon_capslock='"icon":"'$iconpath/capslock.xbm'"'
-icon_numlock='"icon":"'$iconpath/numlock.xbm'"'
-icon_cpu='"icon":"'$iconpath/cpu.xbm'"'
-icon_language='"icon":"'$iconpath/kbd.xbm'"'
-icon_brightness='"icon":"'$iconpath/brightness.xbm'"'
-icon_csq='"icon":"'$iconpath/csq.xbm'"'
+icon_kernel=`iconbyname arch`
+icon_sound_on=`iconbyname sound_on`
+icon_sound_off=`iconbyname sound_off`
+icon_capslock=`iconbyname capslock`
+icon_numlock=`iconbyname numlock`
+icon_cpu=`iconbyname cpu`
+icon_language=`iconbyname kbd`
+icon_brightness=`iconbyname sun`
+icon_csq=`iconbyname csq`
 
-for icon_battary in `ls $iconpath/battary`; do
-	name="icon_`echo $icon_battary | sed 's/\..*//g'`"
-	declare -g ''$name'="icon":"'$iconpath'/battary/'$icon_battary'"'
+for icon_battary in 0 10 20 30 40 50 60 70 80 90 100; do
+	var="icon_battary_$icon_battary"
+	full_path=`iconbyname "battary/battary_$icon_battary"`
+	declare -g "$var=$full_path"
 done
 
 icon_color='"icon_color":"'$color_white'"'
@@ -44,7 +47,7 @@ icon_color='"icon_color":"'$color_white'"'
 
 init_kernel() {
 	## JSON output
-	full_text='"full_text":"'`uname -r`'"'
+	full_text='"full_text":"'`uname -sr`'"'
 	color='"color":"'$color_std'"'
 	kernel='{'$full_text','$color','$icon_kernel','$icon_color'},'
 }
@@ -197,7 +200,7 @@ get_battary_level() {
 	color0='"color":"'$battary_color0'"'
 	color1='"icon_color":"'$battary_color1'"'
 
-	case $battary_level in
+	case "$battary_level" in
 		[0-9])  icon_battary=$icon_battary_0   ;;
 		1[0-9]) icon_battary=$icon_battary_10  ;;
 		2[0-9]) icon_battary=$icon_battary_20  ;;
