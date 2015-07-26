@@ -43,6 +43,12 @@ exec ~/.config/dunst
 exec i3-msg "workspace 8:MISC"
 
 for_window [class="Obshutdown"] floating enable
+for_window [class="Firefox"]    border none
+for_window [class="utox"]       border none
+for_window [class="Deadbeef"]	border none
+for_window [class="Netbeans"]	border none
+for_window [class="Gimp"]		border none
+for_window [class="Geeqie"]		border none
 
 # hide title
 new_window pixel 2
@@ -56,6 +62,9 @@ font pango:DejaVu Sans 8
 ##
 
 floating_modifier $super
+
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
 
 # screenshooter
 bindsym Print exec import -window root ~/Pictures/scr/`date +%d%m%y%H%M%S`.png
@@ -198,9 +207,7 @@ bindcode $alt+86 move container to workspace next
 bindcode $alt+82 move container to workspace prev
 
 assign [class="Firefox"]	→ "2:WEB"
-assign [class="Chromium"]	→ "2:WEB"
 assign [class="utox"]		→ "2:WEB"
-assign [class="qpdfview"]	→ "3:BOOK"
 assign [class="Deadbeef"]	→ "4:MUSIC"
 assign [class="Netbeans"]	→ "5:IDE"
 assign [class="Gimp"]		→ "6:GRAPH"
