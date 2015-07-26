@@ -207,7 +207,7 @@ bindcode $alt+86 move container to workspace next
 bindcode $alt+82 move container to workspace prev
 
 assign [class="Firefox"]	→ "2:WEB"
-assign [class="utox"]		→ "2:WEB"
+assign [class="utox"]		→ "3:MSG"
 assign [class="Deadbeef"]	→ "4:MEDIA"
 assign [class="Netbeans"]	→ "5:IDE"
 assign [class="Gimp"]		→ "6:GRAPH"
