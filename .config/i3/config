@@ -196,10 +196,10 @@ bindcode $super+80 workspace 8:MISC
 bindcode $alt+80 move container to workspace 8:MISC
 
 #workspace 9: output PRIMARY_OUTPUT
-bindsym  $super+9  workspace 9
-bindcode $super+81 workspace 9
-bindsym $alt+9 move container to workspace 9
-bindcode $alt+81 move container to workspace 9
+#bindsym  $super+9  workspace 9
+#bindcode $super+81 workspace 9
+#bindsym $alt+9 move container to workspace 9
+#bindcode $alt+81 move container to workspace 9
 
 bindcode $super+86 workspace next
 bindcode $super+82 workspace prev
