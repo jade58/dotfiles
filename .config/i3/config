@@ -159,17 +159,17 @@ bindsym $alt+2 move container to workspace 2:WEB
 bindcode $super+88 workspace 2:WEB
 bindcode $alt+88 move container to workspace 2:WEB
 
-workspace 3:BOOK output PRIMARY_OUTPUT
-bindsym $super+3 workspace 3:BOOK
-bindsym $alt+3 move container to workspace 3:BOOK
-bindcode $super+89 workspace 3:BOOK
-bindcode $alt+89 move container to workspace 3:BOOK
+workspace 3:MSG output PRIMARY_OUTPUT
+bindsym $super+3 workspace 3:MSG
+bindsym $alt+3 move container to workspace 3:MSG
+bindcode $super+89 workspace 3:MSG
+bindcode $alt+89 move container to workspace 3:MSG
 
-workspace 4:MUSIC output PRIMARY_OUTPUT
-bindsym $super+4 workspace 4:MUSIC
-bindsym $alt+4 move container to workspace 4:MUSIC
-bindcode $super+83 workspace 4:MUSIC
-bindcode $alt+83 move container to workspace 4:MUSIC
+workspace 4:MEDIA output PRIMARY_OUTPUT
+bindsym $super+4 workspace 4:MEDIA
+bindsym $alt+4 move container to workspace 4:MEDIA
+bindcode $super+83 workspace 4:MEDIA
+bindcode $alt+83 move container to workspace 4:MEDIA
 
 workspace 5:IDE	output PRIMARY_OUTPUT
 bindsym $super+5 workspace 5:IDE
@@ -208,7 +208,7 @@ bindcode $alt+82 move container to workspace prev
 
 assign [class="Firefox"]	→ "2:WEB"
 assign [class="utox"]		→ "2:WEB"
-assign [class="Deadbeef"]	→ "4:MUSIC"
+assign [class="Deadbeef"]	→ "4:MEDIA"
 assign [class="Netbeans"]	→ "5:IDE"
 assign [class="Gimp"]		→ "6:GRAPH"
 assign [class="Pcmanfm"]	→ "7:FILES"
