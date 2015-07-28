@@ -77,7 +77,7 @@ get_csq() {
 	csq=`cat /tmp/csq.txt`
 
 	## JSON output
-	full_text='"full_text":"CSQ: '$csq'%"'
+	full_text='"full_text":"'$csq'%"'
 	color='"color":"'$color_std'"'
 	csq='{'$full_text','$color','$icon_csq','$icon_color'},'
 }
