@@ -29,7 +29,7 @@ exec setxkbmap "us,ru" ",winkeys" "grp:caps_toggle"
 exec compton --config ~/.config/compton.conf
 
 # set background image
-exec feh --no-fehbg --bg-fill ~/Pictures/wall/21.jpg
+exec feh --no-fehbg --bg-fill ~/.config/i3/wall.jpg
 
 # notification
 exec ~/.config/dunst
