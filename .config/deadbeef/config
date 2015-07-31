@@ -36,20 +36,20 @@ gtkui.titlebar_stopped DeaDBeeF-%V
 gui_plugin GTK2
 hotkey.key01 "q" 0 0 quit
 hotkey.key02 "c" 0 0 jump_to_current_track
-hotkey.key03 "z" 0 0 prev
-hotkey.key04 "x" 0 0 play
+hotkey.key03 "h" 0 0 prev
+hotkey.key04 "p" 0 0 play
 hotkey.key05 "space" 0 0 toggle_pause
-hotkey.key06 "v" 0 0 stop
-hotkey.key07 "b" 0 0 next
+hotkey.key06 "x" 0 0 stop
+hotkey.key07 "l" 0 0 next
 hotkey.key08 "k" 0 0 prev_playlist
 hotkey.key09 "j" 0 0 next_playlist
 hotkeys_created 1
 ignore_archives 1
 junk.enable_cp1251_detection 0
 junk.enable_cp936_detection 0
-mainwin.geometry.h 744
+mainwin.geometry.h 748
 mainwin.geometry.maximized 0
-mainwin.geometry.w 1362
+mainwin.geometry.w 1366
 mainwin.geometry.x 0
 mainwin.geometry.y 0
 mp3.id3v1_encoding iso8859-1
@@ -103,32 +103,34 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "Artist" "%a" -1 168 0
 playlist.column.02 "№" "%n" -1 37 1
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 11
-playlist.cursor.0 1
-playlist.cursor.1 8
-playlist.cursor.10 8
-playlist.cursor.11 3
-playlist.cursor.12 8
-playlist.cursor.13 0
+playlist.current 21
+playlist.cursor.0 0
+playlist.cursor.1 0
+playlist.cursor.10 11
+playlist.cursor.11 0
+playlist.cursor.12 0
+playlist.cursor.13 4
 playlist.cursor.14 0
-playlist.cursor.15 7
-playlist.cursor.16 0
-playlist.cursor.17 10
-playlist.cursor.18 0
+playlist.cursor.15 1
+playlist.cursor.16 9
+playlist.cursor.17 2
+playlist.cursor.18 3
 playlist.cursor.19 0
-playlist.cursor.2 8
-playlist.cursor.20 5
-playlist.cursor.21 0
-playlist.cursor.22 9
-playlist.cursor.23 2
-playlist.cursor.24 5
-playlist.cursor.25 0
+playlist.cursor.2 2
+playlist.cursor.20 9
+playlist.cursor.21 2
+playlist.cursor.22 4
+playlist.cursor.23 0
+playlist.cursor.24 9
+playlist.cursor.25 9
+playlist.cursor.26 9
+playlist.cursor.27 9
 playlist.cursor.3 9
 playlist.cursor.4 0
-playlist.cursor.5 8
+playlist.cursor.5 0
 playlist.cursor.6 0
 playlist.cursor.7 0
-playlist.cursor.8 15
+playlist.cursor.8 9
 playlist.cursor.9 0
 playlist.scroll.0 0
 playlist.scroll.1 0
@@ -149,6 +151,8 @@ playlist.scroll.22 0
 playlist.scroll.23 0
 playlist.scroll.24 0
 playlist.scroll.25 0
+playlist.scroll.26 0
+playlist.scroll.27 0
 playlist.scroll.3 0
 playlist.scroll.4 0
 playlist.scroll.5 0
@@ -165,33 +169,33 @@ playlist.tab.00004 human
 playlist.tab.00005 autotheism
 playlist.tab.00006 planetary duality
 playlist.tab.00007 akeldama
-playlist.tab.00008 apex predator - easy meat
-playlist.tab.00009 enemy of the music business
-playlist.tab.00010 christ illusion
-playlist.tab.00011 reign in blood
-playlist.tab.00012 vertikal
-playlist.tab.00013 vertikal ii
-playlist.tab.00014 evangelion
-playlist.tab.00015 resurrection through carnage
-playlist.tab.00016 a skeletal domain
-playlist.tab.00017 surgical street
-playlist.tab.00018 monumental
+playlist.tab.00008 watershed
+playlist.tab.00009 ghost reveries
+playlist.tab.00010 apex predator - easy meat
+playlist.tab.00011 enemy of the music business
+playlist.tab.00012 christ illusion
+playlist.tab.00013 reign in blood
+playlist.tab.00014 vertikal
+playlist.tab.00015 evangelion
+playlist.tab.00016 resurrection through carnage
+playlist.tab.00017 a skeletal domain
+playlist.tab.00018 surgical street
 playlist.tab.00019 iron maiden
-playlist.tab.00020 death - pierce me
-playlist.tab.00021 exodromos
-playlist.tab.00022 the great mass
-playlist.tab.00023 ghost reveries
+playlist.tab.00020 the great mass
+playlist.tab.00021 perpetual burn
+playlist.tab.00022 dream theater
+playlist.tab.00023 phantom antichrist
 prefwin.geometry.h 499
 prefwin.geometry.w 892
-prefwin.geometry.x 102
-prefwin.geometry.y 200
+prefwin.geometry.x 234
+prefwin.geometry.y 71
 replaygain_mode 2
 replaygain_preamp 0.0000000
 replaygain_scale 1
 resume.paused 0
-resume.playlist 11
-resume.position 140.08990
-resume.track 3
+resume.playlist 21
+resume.position -1.000000
+resume.track -1
 searchwin.geometry.h 150
 searchwin.geometry.w 450
 searchwin.geometry.x 733
