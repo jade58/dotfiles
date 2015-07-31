@@ -38,7 +38,7 @@ alias rg='ranger'
 alias s='sudo '
 alias rd='rm -rf'
 alias q='exit'
-alias mnt='sudo mount'
+alias mnt='sudo mount -o gid=users,fmask=113,dmask=002'
 alias umnt='sudo umount'
 
 hash -d cpkg=/var/cache/pacman/pkg/
