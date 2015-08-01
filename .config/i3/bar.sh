@@ -7,6 +7,13 @@
 ##
 
 
+#	{{{ Error codes
+
+E_UE=6 # unhandeled event
+
+#	}}}
+
+
 #	{{{ Colors
 
 color_white='#FFFFFF'
@@ -133,7 +140,7 @@ get_capslock() {
 		;;
 
 		*)
-			exit 4
+			exit $E_UE
 		;;
 	esac
 
@@ -237,7 +244,7 @@ get_sound() {
 		;;
 
 		*)
-			exit 4
+			exit $E_UE
 		;;
 	esac
 
@@ -353,7 +360,7 @@ while [ 1 ]; do
 	for func in $func_list; do
 		$func 2> /dev/null
 	done
-	eval echo -e \"${bar//\\/\\\\}\" || exit 3
+	eval echo -e \"${bar//\\/\\\\}\" || exit
 
 	sleep 0.5
 done
