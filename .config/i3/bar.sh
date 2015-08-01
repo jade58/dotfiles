@@ -121,15 +121,21 @@ get_capslock() {
 	## JSON output
 	full_text='"full_text":"'$capslock'"'
 
-	if [ "$capslock" == "ON" ]; then
-		color0=$color_waring
-		color1=$color_waring
-	else
-		color0=$color_std
-		color1=$color_white
-	fi
-	color0='"color":"'$color0'"'
-	color1='"icon_color":"'$color1'"'
+	case "$capslock" in
+		"ON")
+			color0='"color":"'$color_waring'"'      # text
+			color1='"icon_color":"'$color_waring'"' # icon
+		;;
+
+		"OFF")
+			color0='"color":"'$color_std'"'
+			color1='"icon_color":"'$color_white'"'
+		;;
+
+		*)
+			exit 4
+		;;
+	esac
 
 	capslock='{'$full_text','$color0','$icon_capslock','$color1'},'
 }
@@ -159,18 +165,22 @@ get_heating_cpu() {
 	## JSON output
 	full_text='"full_text":"'$heating_cpu'°C"'
 
-	cputemp_color0=$color_std   # text
-	cputemp_color1=$color_white # icon
-	if (( "$heating_cpu" >= "70" )); then
-		cputemp_color0=$color_waring
-		cputemp_color1=$color_waring
-		if (( "$heating_cpu" >= 80 )); then
-			cputemp_color0=$color_danger
-			cputemp_color1=$color_danger
-		fi
-	fi
-	color0='"color":"'$cputemp_color0'"'
-	color1='"icon_color":"'$cputemp_color1'"'
+	case "$heating_cpu" in
+		7[0-9])
+			color0='"color":"'$color_waring'"'      # text
+			color1='"icon_color":"'$color_waring'"' # icon
+		;;
+
+		8[0-9] | 9[0-9] | 10[0-5])
+			color0='"color":"'$color_danger'"'
+			color1='"icon_color":"'$color_danger'"'
+		;;
+
+		*)
+			color0='"color":"'$color_std'"'
+			color1='"icon_color":"'$color_white'"'
+		;;
+	esac
 
 	heating_cpu='{'$full_text','$color0','$icon_cpu','$color1'},'
 }
@@ -182,13 +192,14 @@ get_heating_cpu() {
 
 init_brightness() {
 	icon_brightness=`iconbyname sun`
+	brightness_path="/sys/class/backlight/intel_backlight"
 }
 
 get_brightness() {
-	brightness=`cat /sys/class/backlight/intel_backlight/brightness`
-	max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`
-	brightness_level=`echo "scale = 2; $brightness * 100 / $max_brightness"\
-			| bc`
+	brg=`cat $brightness_path/brightness`
+	max_brg=`cat $brightness_path/max_brightness`
+	brightness_level=`echo "scale = 2; $brg * 100 / $max_brg"\
+			 | bc`
 
 	## JSON output
 	full_text='"full_text":"'$brightness_level'%"'
@@ -209,18 +220,26 @@ init_sound() {
 get_sound() {
 	sound_level=`amixer get Master\
 			| grep 'Mono:'\
-			| sed 's/\].*$//;s/^.*\[//'`
+			| sed 's/\].*//;s/.*\[//'`
 
 	sound_state=`amixer get Master\
 			| grep 'Mono:'\
 			| awk '{print($6);}'`
 
 	## JSON output
-	if [ "$sound_state" == "[on]" ]; then
-		icon=$icon_sound_on
-	elif [ "$sound_state" == "[off]" ]; then
-		icon=$icon_sound_off
-	fi
+	case "$sound_state" in
+		"[on]")
+			icon=$icon_sound_on
+		;;
+
+		"[off]")
+			icon=$icon_sound_off
+		;;
+
+		*)
+			exit 4
+		;;
+	esac
 
 	full_text='"full_text":"'$sound_level'"'
 	color='"color":"'$color_std'"'
@@ -246,18 +265,22 @@ get_battery_level() {
 	## JSON output
 	full_text='"full_text":"'$battery_level'%"'
 
-	battery_color0=$color_std   # text
-	battery_color1=$color_white # icon
-	if (( "$battery_level" <= "25" )); then
-		battery_color0=$color_waring
-		battery_color1=$color_waring
-		if (( "$battery_level" <= "10" )); then
-			battery_color0=$color_danger
-			battery_color1=$color_danger
-		fi
-	fi
-	color0='"color":"'$battery_color0'"'
-	color1='"icon_color":"'$battery_color1'"'
+	case "$battery_level" in
+		[0-9] | 10)
+			color0='"color":"'$color_danger'"'      # text
+			color1='"icon_color":"'$color_danger'"' # icon
+		;;
+
+		1[1-9] | 2[0-5])
+			color0='"color":"'$color_waring'"'
+			color1='"icon_color":"'$color_waring'"'
+		;;
+
+		*)
+			color0='"color":"'$color_std'"'
+			color1='"icon_color":"'$color_white'"'
+		;;
+	esac
 
 	case "$battery_level" in
 		[0-5])           icon_battery=$icon_battery_0   ;;
@@ -306,10 +329,10 @@ blocks=(
 	[10]=kernel
 	[20]=language
 	[30]=numlock
-#	[40]=capslock
-#	[50]=csq
+	[40]=capslock
+	[50]=csq
 	[60]=heating_cpu
-#	[70]=brightness
+	[70]=brightness
 	[80]=sound
 	[90]=battery_level
 	[100]=date
