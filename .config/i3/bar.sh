@@ -259,6 +259,7 @@ get_sound() {
 ##
 
 init_battery_level() {
+	icon_battery_charging=`iconbyname "battery/battery_charging"`
 	for icon_battery in 0 10 20 30 40 50 60 70 80 90 100; do
 		var="icon_battery_$icon_battery"
 		full_path=`iconbyname "battery/battery_$icon_battery"`
@@ -268,6 +269,7 @@ init_battery_level() {
 
 get_battery_level() {
 	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
+	state=`cat /sys/class/power_supply/BAT0/status`
 
 	## JSON output
 	full_text='"full_text":"'$battery_level'%"'
@@ -289,18 +291,26 @@ get_battery_level() {
 		;;
 	esac
 
-	case "$battery_level" in
-		[0-5])           icon_battery=$icon_battery_0   ;;
-		[6-9] | 1[0-5])  icon_battery=$icon_battery_10  ;;
-		1[6-9] | 2[0-5]) icon_battery=$icon_battery_20  ;;
-		2[6-9] | 3[0-5]) icon_battery=$icon_battery_30  ;;
-		3[6-9] | 4[0-5]) icon_battery=$icon_battery_40  ;;
-		4[6-9] | 5[0-5]) icon_battery=$icon_battery_50  ;;
-		5[6-9] | 6[0-5]) icon_battery=$icon_battery_60  ;;
-		6[6-9] | 7[0-5]) icon_battery=$icon_battery_70  ;;
-		7[6-9] | 8[0-5]) icon_battery=$icon_battery_80  ;;
-		8[6-9] | 9[0-5]) icon_battery=$icon_battery_90  ;;
-		9[6-9] | 100)    icon_battery=$icon_battery_100 ;;
+	case "$state" in
+		Discharging)
+			case "$battery_level" in
+				[0-5])           icon_battery=$icon_battery_0   ;;
+				[6-9] | 1[0-5])  icon_battery=$icon_battery_10  ;;
+				1[6-9] | 2[0-5]) icon_battery=$icon_battery_20  ;;
+				2[6-9] | 3[0-5]) icon_battery=$icon_battery_30  ;;
+				3[6-9] | 4[0-5]) icon_battery=$icon_battery_40  ;;
+				4[6-9] | 5[0-5]) icon_battery=$icon_battery_50  ;;
+				5[6-9] | 6[0-5]) icon_battery=$icon_battery_60  ;;
+				6[6-9] | 7[0-5]) icon_battery=$icon_battery_70  ;;
+				7[6-9] | 8[0-5]) icon_battery=$icon_battery_80  ;;
+				8[6-9] | 9[0-5]) icon_battery=$icon_battery_90  ;;
+				9[6-9] | 100)    icon_battery=$icon_battery_100 ;;
+			esac
+		;;
+
+		Charging)
+			icon_battery=$icon_battery_charging
+		;;
 	esac
 
 	battery_level='{'$full_text','$color0','$icon_battery','$color1'},'
@@ -336,10 +346,10 @@ blocks=(
 	[10]=kernel
 	[20]=language
 	[30]=numlock
-	[40]=capslock
-	[50]=csq
+#	[40]=capslock
+#	[50]=csq
 	[60]=heating_cpu
-	[70]=brightness
+#	[70]=brightness
 	[80]=sound
 	[90]=battery_level
 	[100]=date
