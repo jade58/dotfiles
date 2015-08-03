@@ -119,15 +119,7 @@ init_capslock() {
 	icon_capslock=`iconbyname capslock`
 }
 
-get_capslock() {
-	capslock=`xset q\
-			| grep "Caps Lock:"\
-			| awk '{print($4)}'\
-			| tr a-z A-Z`
-
-	## JSON output
-	full_text='"full_text":"'$capslock'"'
-
+get_capslock_color() {
 	case "$capslock" in
 		"ON")
 			color0='"color":"'$color_waring'"'      # text
@@ -144,7 +136,18 @@ get_capslock() {
 		;;
 	esac
 
-	capslock='{'$full_text','$color0','$icon_capslock','$color1'},'
+	color=$color0','$color1
+}
+
+get_capslock() {
+	capslock=`xset q\
+			| grep "Caps Lock:"\
+			| awk '{print($4)}'\
+			| tr a-z A-Z`
+
+	## JSON output
+	full_text='"full_text":"'$capslock'"'
+	capslock='{'$full_text','$color','$icon_capslock'},'
 }
 
 
@@ -172,9 +175,7 @@ get_heating_full_text() {
 	full_text='"full_text":"'$heating_cpu'°C"'
 }
 
-get_heating_cpu() {
-	## JSON output
-	get_heating_full_text
+get_heating_color() {
 	case "$heating_cpu" in
 		7[0-9])
 			color0='"color":"'$color_waring'"'      # text
@@ -192,7 +193,14 @@ get_heating_cpu() {
 		;;
 	esac
 
-	heating_cpu='{'$full_text','$color0','$icon_cpu','$color1'},'
+	color=$color0','$color1
+}
+
+get_heating_cpu() {
+	## JSON output
+	get_heating_full_text
+	get_heating_color
+	heating_cpu='{'$full_text','$color','$icon_cpu'},'
 }
 
 
