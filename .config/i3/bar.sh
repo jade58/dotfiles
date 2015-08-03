@@ -17,6 +17,7 @@ E_UE=6 # unhandeled event
 #	{{{ Colors
 
 color_white='#FFFFFF'
+color_green='#00CC00'
 
 color_std='#CCCCCC'
 color_waring='#CCCC00'
@@ -294,6 +295,17 @@ function get_battery_color() {
 			color1='"icon_color":"'$color_waring'"'
 		;;
 
+		9[0-9] | 100)
+			state=`cat /sys/class/power_supply/BAT0/status`
+			if [[ "$state" == "Charging" ]]; then
+				color0='"color":"'$color_green'"'
+				color1='"icon_color":"'$color_green'"'
+			else
+				color0='"color":"'$color_std'"'
+				color1='"icon_color":"'$color_white'"'
+			fi
+		;;
+
 		*)
 			color0='"color":"'$color_std'"'
 			color1='"icon_color":"'$color_white'"'
@@ -304,6 +316,7 @@ function get_battery_color() {
 }
 
 function get_battery_icon() {
+	state=`cat /sys/class/power_supply/BAT0/status`
 	case "$state" in
 		Discharging)
 			case "$battery_level" in
@@ -333,7 +346,6 @@ function get_battery_icon() {
 
 function get_battery_level() {
 	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
-	state=`cat /sys/class/power_supply/BAT0/status`
 
 	## JSON output
 	full_text='"full_text":"'$battery_level'%"'
@@ -347,6 +359,10 @@ function get_battery_level() {
 ## Date and time
 ##
 
+function init_date() {
+	icon_date=`iconbyname cal`
+}
+
 function get_date() {
 	date=`date +%a\ %d.%m.%Y\
 			| tr a-z A-Z`
@@ -354,7 +370,7 @@ function get_date() {
 	## JSON output
 	full_text='"full_text":"'$date'"'
 	color='"color":"'$color_std'"'
-	date='{'$full_text','$color'},'
+	date='{'$full_text','$color','$icon_date','$icon_color'},'
 }
 
 ## The last block
