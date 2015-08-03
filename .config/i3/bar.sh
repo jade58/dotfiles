@@ -224,16 +224,7 @@ init_sound() {
 	icon_sound_off=`iconbyname sound_off`
 }
 
-get_sound() {
-	sound_level=`amixer get Master\
-			| grep 'Mono:'\
-			| sed 's/\].*//;s/.*\[//'`
-
-	sound_state=`amixer get Master\
-			| grep 'Mono:'\
-			| awk '{print($6);}'`
-
-	## JSON output
+get_sound_icon() {
 	case "$sound_state" in
 		"[on]")
 			icon=$icon_sound_on
@@ -247,9 +238,21 @@ get_sound() {
 			exit $E_UE
 		;;
 	esac
+}
 
+get_sound() {
+	sound_level=`amixer get Master\
+			| grep 'Mono:'\
+			| sed 's/\].*//;s/.*\[//'`
+
+	sound_state=`amixer get Master\
+			| grep 'Mono:'\
+			| awk '{print($6);}'`
+
+	## JSON output
 	full_text='"full_text":"'$sound_level'"'
 	color='"color":"'$color_std'"'
+	get_sound_icon
 	sound='{'$full_text','$color','$icon','$icon_color'},'
 }
 
