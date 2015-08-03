@@ -267,13 +267,7 @@ init_battery_level() {
 	done
 }
 
-get_battery_level() {
-	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
-	state=`cat /sys/class/power_supply/BAT0/status`
-
-	## JSON output
-	full_text='"full_text":"'$battery_level'%"'
-
+get_battery_color() {
 	case "$battery_level" in
 		[0-9] | 10)
 			color0='"color":"'$color_danger'"'      # text
@@ -291,6 +285,16 @@ get_battery_level() {
 		;;
 	esac
 
+	color=$color0','$color1
+}
+
+get_battery_level() {
+	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
+	state=`cat /sys/class/power_supply/BAT0/status`
+
+	## JSON output
+	full_text='"full_text":"'$battery_level'%"'
+	get_battery_color
 	case "$state" in
 		Discharging)
 			case "$battery_level" in
@@ -313,7 +317,7 @@ get_battery_level() {
 		;;
 	esac
 
-	battery_level='{'$full_text','$color0','$icon_battery','$color1'},'
+	battery_level='{'$full_text','$color','$icon_battery'},'
 }
 
 
