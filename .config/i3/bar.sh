@@ -161,7 +161,7 @@ function init_heating_cpu() {
 	icon_cpu=`iconbyname cpu`
 }
 
-function get_heating_full_text() {
+function get_heating() {
 	sensors=`sensors\
 			| grep Core\
 			| sed 's/\..*//g;s/.*+//g'`
@@ -174,10 +174,11 @@ function get_heating_full_text() {
 	done
 	heating_cpu=$(($heating_cpu / $kernels))
 
-	echo '"full_text":"'$heating_cpu'°C"'
+	echo "$heating_cpu"
 }
 
 function get_heating_color() {
+	heating_cpu=$1
 	case "$heating_cpu" in
 		7[0-9])
 			color0='"color":"'$color_waring'"'      # text
@@ -200,8 +201,9 @@ function get_heating_color() {
 
 function get_heating_cpu() {
 	## JSON output
-	full_text=`get_heating_full_text`
-	color=`get_heating_color`
+	heating_cpu=`get_heating`
+	full_text='"full_text":"'$heating_cpu'°C"'
+	color=`get_heating_color $heating_cpu`
 	heating_cpu='{'$full_text','$color','$icon_cpu'},'
 }
 
