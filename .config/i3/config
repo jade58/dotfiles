@@ -63,6 +63,9 @@ font pango:DejaVu Sans 8
 
 floating_modifier $super
 
+# show / hide mouse cursor
+bindsym $super+m exec ~/bin/cursor.toggle
+
 bindsym $super+o border toggle
 
 bindsym XF86MonBrightnessUp exec xbacklight +10
