@@ -7,6 +7,11 @@ function delay() {
 	done
 }
 
+function Error() {
+	echo ">>= ERROR"
+	sleep 1
+}
+
 function Cancel() {
 	echo ">>= CANCEL"
 }
@@ -38,7 +43,7 @@ function Lock() {
 
 	import -window root /tmp/lock.png
 	mogrify -scale 10% -scale 1000% -blur 2 /tmp/lock.png
-	i3lock -i /tmp/lock.png
+	nohup i3lock -i /tmp/lock.png >& /dev/null
 }
 
 function Suspend() {
@@ -51,12 +56,12 @@ function Suspend() {
 i3-msg "floating enable" > /dev/null
 i3-msg "border none" > /dev/null
 
-Cancel="A"
-Exit_wm="B"
-Reboot="C"
-Shutdown="D"
-Lock="E"
-Suspend="F"
+Cancel="C"
+Exit_wm="E"
+Reboot="R"
+Shutdown="H"
+Lock="L"
+Suspend="S"
 
 printf "[%s]: CANCEL\n"   "$Cancel"
 printf "[%s]: EXIT WM\n"  "$Exit_wm"
@@ -70,12 +75,12 @@ printf "Action: "
 read action
 
 case "$action" in
-	"$Cancel"  ) Cancel   ;;
-	"$Exit_wm" ) Exit_wm  ;;
-	"$Reboot"  ) Reboot   ;;
-	"$Shutdown") Shutdown ;;
-	"$Lock"    ) Lock     ;;
-	"$Suspend" ) Suspend  ;;
+	["$Cancel"]  ) Cancel   ;;
+	["$Exit_wm"] ) Exit_wm  ;;
+	["$Reboot"]  ) Reboot   ;;
+	["$Shutdown"]) Shutdown ;;
+	["$Lock"]    ) Lock     ;;
+	["$Suspend"] ) Suspend  ;;
 esac
 
 clear
