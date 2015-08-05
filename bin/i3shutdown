@@ -51,12 +51,12 @@ function Suspend() {
 i3-msg "floating enable" > /dev/null
 i3-msg "border none" > /dev/null
 
-Cancel=0
-Exit_wm=1
-Reboot=2
-Shutdown=3
-Lock=4
-Suspend=5
+Cancel="A"
+Exit_wm="B"
+Reboot="C"
+Shutdown="D"
+Lock="E"
+Suspend="F"
 
 printf "[%s]: CANCEL\n"   "$Cancel"
 printf "[%s]: EXIT WM\n"  "$Exit_wm"
