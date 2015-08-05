@@ -29,7 +29,8 @@ icon_color='"icon_color":"'$color_white'"'
 
 
 function iconbyname() {
-	echo '"icon":"'$HOME/.config/i3/icons/$1'.xbm"'
+	local icon=$1
+	echo '"icon":"'$HOME/.config/i3/icons/$icon'.xbm"'
 }
 
 
@@ -39,9 +40,9 @@ function iconbyname() {
 
 function init_kernel() {
 	## JSON output
-	full_text='"full_text":"'`uname -sr`'"'
-	color='"color":"'$color_std'"'
-	icon_kernel=`iconbyname arch`
+	local full_text='"full_text":"'`uname -sr`'"'
+	local color='"color":"'$color_std'"'
+	local icon_kernel=`iconbyname arch`
 	kernel='{'$full_text','$color','$icon_kernel','$icon_color'},'
 }
 
@@ -58,13 +59,13 @@ function init_language() {
 }
 
 function get_language() {
-	lng=`skb noloop\
+	language=`skb noloop\
 			| head -c 2\
 			| tr a-z A-Z`
 
 	## JSON output
-	full_text='"full_text":"'$lng'"'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$language'"'
+	local color='"color":"'$color_std'"'
 	language='{'$full_text','$color','$icon_language','$icon_color'},'
 }
 
@@ -85,8 +86,8 @@ function get_csq() {
 	csq=`cat /tmp/csq.txt`
 
 	## JSON output
-	full_text='"full_text":"'$csq'%"'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$csq'%"'
+	local color='"color":"'$color_std'"'
 	csq='{'$full_text','$color','$icon_csq','$icon_color'},'
 }
 
@@ -106,8 +107,8 @@ function get_numlock() {
 			| tr a-z A-Z`
 
 	## JSON output
-	full_text='"full_text":"'$numlock'"'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$numlock'"'
+	local color='"color":"'$color_std'"'
 	numlock='{'$full_text','$color','$icon_numlock','$icon_color'},'
 }
 
@@ -121,6 +122,10 @@ function init_capslock() {
 }
 
 function get_capslock_color() {
+	local capslock=$1
+	local color0
+	local color1
+
 	case "$capslock" in
 		"ON")
 			color0='"color":"'$color_waring'"'      # text
@@ -147,8 +152,8 @@ function get_capslock() {
 			| tr a-z A-Z`
 
 	## JSON output
-	full_text='"full_text":"'$capslock'"'
-	color=`get_capslock_color`
+	local full_text='"full_text":"'$capslock'"'
+	local color=`get_capslock_color $capslock`
 	capslock='{'$full_text','$color','$icon_capslock'},'
 }
 
@@ -162,23 +167,26 @@ function init_heating_cpu() {
 }
 
 function get_heating() {
-	sensors=`sensors\
+	local sensors=`sensors\
 			| grep Core\
 			| sed 's/\..*//g;s/.*+//g'`
 
-	heating_cpu=0
-	kernels=0
+	local heating_cpu=0
+	local kernels=0
 	for core in $sensors; do
-		heating_cpu=$(($heating_cpu + $core))
-		kernels=$(($kernels + 1))
+		$((heating_cpu += core))
+		$((kernels++))
 	done
-	heating_cpu=$(($heating_cpu / $kernels))
+	$((heating_cpu /= kernels))
 
 	echo "$heating_cpu"
 }
 
 function get_heating_color() {
-	heating_cpu=$1
+	local heating_cpu=$1
+	local color0
+	local color1
+
 	case "$heating_cpu" in
 		7[0-9])
 			color0='"color":"'$color_waring'"'      # text
@@ -200,10 +208,11 @@ function get_heating_color() {
 }
 
 function get_heating_cpu() {
-	## JSON output
 	heating_cpu=`get_heating`
-	full_text='"full_text":"'$heating_cpu'°C"'
-	color=`get_heating_color $heating_cpu`
+
+	## JSON output
+	local full_text='"full_text":"'$heating_cpu'°C"'
+	local color=`get_heating_color $heating_cpu`
 	heating_cpu='{'$full_text','$color','$icon_cpu'},'
 }
 
@@ -218,14 +227,14 @@ function init_brightness() {
 }
 
 function get_brightness() {
-	brg=`cat $brightness_path/brightness`
-	max_brg=`cat $brightness_path/max_brightness`
-	brightness_level=`echo "scale = 2; $brg * 100 / $max_brg"\
+	local brg=`cat $brightness_path/brightness`
+	local max_brg=`cat $brightness_path/max_brightness`
+	local brightness_level=`echo "scale = 2; $brg * 100 / $max_brg"\
 			 | bc`
 
 	## JSON output
-	full_text='"full_text":"'$brightness_level'%"'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$brightness_level'%"'
+	local color='"color":"'$color_std'"'
 	brightness='{'$full_text','$color','$icon_brightness','$icon_color'},'
 }
 
@@ -240,6 +249,10 @@ function init_sound() {
 }
 
 function get_sound_icon() {
+	local sound_state=`amixer get Master\
+			| grep 'Mono:'\
+			| awk '{print($6);}'`
+
 	case "$sound_state" in
 		"[on]")
 			echo "$icon_sound_on"
@@ -256,18 +269,14 @@ function get_sound_icon() {
 }
 
 function get_sound() {
-	sound_level=`amixer get Master\
+	local sound_level=`amixer get Master\
 			| grep 'Mono:'\
 			| sed 's/\].*//;s/.*\[//'`
-
-	sound_state=`amixer get Master\
-			| grep 'Mono:'\
-			| awk '{print($6);}'`
-
+	
 	## JSON output
-	full_text='"full_text":"'$sound_level'"'
-	color='"color":"'$color_std'"'
-	icon=`get_sound_icon`
+	local full_text='"full_text":"'$sound_level'"'
+	local color='"color":"'$color_std'"'
+	local icon=`get_sound_icon`
 	sound='{'$full_text','$color','$icon','$icon_color'},'
 }
 
@@ -278,14 +287,18 @@ function get_sound() {
 
 function init_battery_level() {
 	icon_battery_charging=`iconbyname "battery/battery_charging"`
-	for icon_battery in 0 10 20 30 40 50 60 70 80 90 100; do
-		var="icon_battery_$icon_battery"
-		full_path=`iconbyname "battery/battery_$icon_battery"`
+	for ((i=0; i <= 100; i++)); do
+		local var="icon_battery_$i"
+		local full_path=`iconbyname "battery/battery_$i"`
 		declare -g "$var=$full_path"
 	done
 }
 
 function get_battery_color() {
+	local battery_level=$1
+	local color0
+	local color1
+
 	case "$battery_level" in
 		[0-9] | 10)
 			color0='"color":"'$color_danger'"'      # text
@@ -298,7 +311,7 @@ function get_battery_color() {
 		;;
 
 		9[0-9] | 100)
-			state=`cat /sys/class/power_supply/BAT0/status`
+			local state=`cat /sys/class/power_supply/BAT0/status`
 			if [[ "$state" == "Charging" ]]; then
 				color0='"color":"'$color_green'"'
 				color1='"icon_color":"'$color_green'"'
@@ -318,7 +331,9 @@ function get_battery_color() {
 }
 
 function get_battery_icon() {
-	state=`cat /sys/class/power_supply/BAT0/status`
+	local battery_level=$1
+	local state=`cat /sys/class/power_supply/BAT0/status`
+
 	case "$state" in
 		Discharging)
 			case "$battery_level" in
@@ -350,9 +365,9 @@ function get_battery_level() {
 	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
 
 	## JSON output
-	full_text='"full_text":"'$battery_level'%"'
-	color=`get_battery_color`
-	icon_battery=`get_battery_icon`
+	local full_text='"full_text":"'$battery_level'%"'
+	local color=`get_battery_color $battery_level`
+	local icon_battery=`get_battery_icon $battery_level`
 	battery_level='{'$full_text','$color','$icon_battery'},'
 }
 
@@ -370,8 +385,8 @@ function get_date() {
 			| tr a-z A-Z`
 
 	## JSON output
-	full_text='"full_text":"'$date'"'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$date'"'
+	local color='"color":"'$color_std'"'
 	date='{'$full_text','$color','$icon_date','$icon_color'},'
 }
 
@@ -380,8 +395,8 @@ function get_time() {
 	time=`date +%H:%M:%S`
 
 	# JSON output
-	full_text='"full_text":"'$time' "'
-	color='"color":"'$color_std'"'
+	local full_text='"full_text":"'$time' "'
+	local color='"color":"'$color_std'"'
 	time='{'$full_text','$color'}'
 }
 
