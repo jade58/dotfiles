@@ -138,6 +138,9 @@ bindsym $alt+r restart
 # obshutdown
 bindsym $alt+p exec obshutdown -c ~/.config/obshutdown.rc
 
+# i3shutdown
+bindsym $alt+i exec uxterm -e ~/bin/i3shutdown
+
 # exit in i3 # не работает
 # bindsym $alt+e exit
 

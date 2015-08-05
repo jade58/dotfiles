@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+function delay() {
+	for ((i=3; i > 0; i--)); do
+		echo "${i}..."
+		sleep 1
+	done
+}
+
+function Cancel() {
+	echo ">>= CANCEL"
+}
+
+function Exit_wm() {
+	echo ">>= EXIT WM"
+	delay
+
+	i3-msg "exit"
+}
+
+function Reboot() {
+	echo ">>= REBOOT"
+	delay
+
+	reboot
+}
+
+function Shutdown() {
+	echo ">>= SHUTDOWN"
+	delay
+
+	poweroff
+}
+
+function Lock() {
+	echo ">>= LOCK"
+	delay
+
+	import -window root /tmp/lock.png
+	mogrify -scale 10% -scale 1000% -blur 2 /tmp/lock.png
+	i3lock -i /tmp/lock.png
+}
+
+function Suspend() {
+	echo ">>= SUSPEND"
+	delay
+
+	sudo pm-suspend
+}
+
+i3-msg "floating enable" > /dev/null
+i3-msg "border none" > /dev/null
+
+Cancel=0
+Exit_wm=1
+Reboot=2
+Shutdown=3
+Lock=4
+Suspend=5
+
+printf "[%s]: CANCEL\n"   "$Cancel"
+printf "[%s]: EXIT WM\n"  "$Exit_wm"
+printf "[%s]: REBOOT\n"   "$Reboot"
+printf "[%s]: SHUTDOWN\n" "$Shutdown"
+printf "[%s]: LOCK\n"     "$Lock"
+printf "[%s]: SUSPEND\n"  "$Suspend"
+echo
+
+printf "Action: "
+read action
+
+case "$action" in
+	"$Cancel"  ) Cancel   ;;
+	"$Exit_wm" ) Exit_wm  ;;
+	"$Reboot"  ) Reboot   ;;
+	"$Shutdown") Shutdown ;;
+	"$Lock"    ) Lock     ;;
+	"$Suspend" ) Suspend  ;;
+esac
+
+clear
+exit
