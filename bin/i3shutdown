@@ -7,6 +7,27 @@ function delay() {
 	done
 }
 
+function printHelp() {
+	echo "Simple shutdown menu for i3 window manager"
+	echo
+	echo "Dependencies:"
+	echo "    i3-wm,"
+	echo "    i3lock, and imagemagick -- lock screen"
+	echo "    another compmgr, and transset-df -- transparency"
+	echo
+	echo "Using with another terminal"
+	echo "    xterm -e ~/i3shutdown"
+	echo "    bindsym \$mod+i exec xterm -e ~/i3shutdown"
+	echo
+	echo "Keys:"
+	echo "    -h --help    print this menu"
+	echo
+	echo "kalterfive"
+}
+
+
+#	{{{ Actions
+
 function Error() {
 	echo ">>= ERROR"
 	sleep 1
@@ -14,6 +35,7 @@ function Error() {
 
 function Cancel() {
 	echo ">>= CANCEL"
+	sleep 1
 }
 
 function Exit_wm() {
@@ -53,8 +75,19 @@ function Suspend() {
 	sudo pm-suspend
 }
 
+#	}}}
+
+
+case "$1" in
+	"-h" | "--help")
+		printHelp
+		exit
+	;;
+esac
+
 i3-msg "floating enable" > /dev/null
 i3-msg "border none" > /dev/null
+transset-df 0.8 -a > /dev/null
 
 Cancel="C"
 Exit_wm="E"
