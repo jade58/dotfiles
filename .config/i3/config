@@ -32,7 +32,7 @@ exec compton --config ~/.config/compton.conf
 exec feh --no-fehbg --bg-fill ~/.config/i3/wall.jpg
 
 # notification
-exec ~/.config/dunst
+exec ~/bin/dunst
 
 
 ##
@@ -72,7 +72,7 @@ bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym XF86MonBrightnessDown exec xbacklight -10
 
 # screenshooter
-bindsym Print exec import -window root ~/Pictures/scr/`date +%d%m%y%H%M%S`.png
+bindsym Print exec import -window root ~/pic/scr/`date +%d%m%y%H%M%S`.png
 
 # start a terminal
 bindsym $super+Return exec $term
