@@ -310,7 +310,7 @@ function get_battery_color() {
 			color1='"icon_color":"'$color_waring'"'
 		;;
 
-		9[0-9] | 100)
+		9[5-9] | 100)
 			local state=`cat /sys/class/power_supply/BAT0/status`
 			if [[ "$state" == "Charging" ]]; then
 				color0='"color":"'$color_green'"'

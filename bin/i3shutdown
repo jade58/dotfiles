@@ -87,7 +87,7 @@ esac
 
 i3-msg "floating enable" > /dev/null
 i3-msg "border none" > /dev/null
-transset-df 0.8 -a > /dev/null
+transset-df 0.85 -a > /dev/null
 
 Cancel="C"
 Exit_wm="E"
