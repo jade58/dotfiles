@@ -17,7 +17,7 @@ converter.output_folder /home/kalterfive
 converter.output_format 0
 converter.overwrite_action 0
 deadbeef_version 0.6.2
-filechooser.lastdir file:///home/kalterfive/music/metal/opeth
+filechooser.lastdir file:///home/kalterfive/music/metal
 global_preamp 0.0000000
 gtkui.autoresize_columns 0
 gtkui.embolden_current_track 1
@@ -103,35 +103,35 @@ playlist.column.00 "♫" "" 1 27 0
 playlist.column.01 "Artist" "%a" -1 168 0
 playlist.column.02 "№" "%n" -1 37 1
 playlist.column.03 "Title" "%t" -1 405 0
-playlist.current 21
+playlist.current 8
 playlist.cursor.0 0
-playlist.cursor.1 0
+playlist.cursor.1 7
 playlist.cursor.10 11
 playlist.cursor.11 0
 playlist.cursor.12 0
-playlist.cursor.13 4
-playlist.cursor.14 0
+playlist.cursor.13 9
+playlist.cursor.14 8
 playlist.cursor.15 1
-playlist.cursor.16 9
-playlist.cursor.17 2
+playlist.cursor.16 2
+playlist.cursor.17 0
 playlist.cursor.18 3
 playlist.cursor.19 0
-playlist.cursor.2 2
+playlist.cursor.2 3
 playlist.cursor.20 9
-playlist.cursor.21 2
-playlist.cursor.22 4
-playlist.cursor.23 0
-playlist.cursor.24 9
+playlist.cursor.21 7
+playlist.cursor.22 9
+playlist.cursor.23 1
+playlist.cursor.24 4
 playlist.cursor.25 9
 playlist.cursor.26 9
 playlist.cursor.27 9
 playlist.cursor.3 9
-playlist.cursor.4 0
-playlist.cursor.5 0
+playlist.cursor.4 8
+playlist.cursor.5 8
 playlist.cursor.6 0
 playlist.cursor.7 0
-playlist.cursor.8 9
-playlist.cursor.9 0
+playlist.cursor.8 2
+playlist.cursor.9 8
 playlist.scroll.0 0
 playlist.scroll.1 0
 playlist.scroll.10 0
@@ -183,17 +183,18 @@ playlist.tab.00018 surgical street
 playlist.tab.00019 iron maiden
 playlist.tab.00020 the great mass
 playlist.tab.00021 perpetual burn
-playlist.tab.00022 dream theater
-playlist.tab.00023 phantom antichrist
+playlist.tab.00022 nirvana
+playlist.tab.00023 dream theater
+playlist.tab.00024 neurosis
 prefwin.geometry.h 499
 prefwin.geometry.w 892
-prefwin.geometry.x 234
+prefwin.geometry.x 236
 prefwin.geometry.y 71
 replaygain_mode 2
 replaygain_preamp 0.0000000
 replaygain_scale 1
 resume.paused 0
-resume.playlist 21
+resume.playlist 8
 resume.position -1.000000
 resume.track -1
 searchwin.geometry.h 150
@@ -215,7 +216,7 @@ streamer.16_to_24 0
 streamer.8_to_16 0
 trkproperties.geometry.h 400
 trkproperties.geometry.w 400
-trkproperties.geometry.x 293
+trkproperties.geometry.x 299
 trkproperties.geometry.y 184
 waveform.bg_alpha 65535
 waveform.bg_color_b 11565

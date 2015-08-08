@@ -16,7 +16,7 @@ suspend=		sudo pm-suspend
 	
 [labels]
 cancel=			CANCEL
-logout=			EXIT WM
+logout=			EXIT
 restart=		REBOOT
 shutdown=		SHUTDOWN
 lock=			LOCK
