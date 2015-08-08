@@ -48,48 +48,48 @@ case "$1" in
 		esac
 	;;
 
-#	video/brightnessdown)
-#		case "$2" in
-#			BRTDN)
-#				logger "ACPI video/brightnessdown"
-#
+	video/brightnessdown)
+		case "$2" in
+			BRTDN)
+				logger "ACPI video/brightnessdown"
+
 #				not working
 #				xbacklight -d :0 -dec 10
 #
 #				bl_dev=/sys/class/backlight/intel_backlight
 #				step=100
 #				echo $(($(< $bl_dev/brightness) - $step)) >$bl_dev/brightness
-#			;;
-#
-#			*)
-#				logger "ACPI action undefined: $2"
-#			;;
-#		esac
-#	;;
-#
-#	video/brightnessup)
-#		case "$2" in
-#			BRTUP)
-#				logger "ACPI video/brightnessup"
+			;;
+
+			*)
+				logger "ACPI action undefined: $2"
+			;;
+		esac
+	;;
+
+	video/brightnessup)
+		case "$2" in
+			BRTUP)
+				logger "ACPI video/brightnessup"
 #				not working
 #				xbacklight -d :0 -inc 10
 #
 #				bl_dev=/sys/class/backlight/intel_backlight
 #				step=100
 #				echo $(($(< $bl_dev/brightness) + $step)) >$bl_dev/brightness
-#			;;
-#
-#			*)
-#				logger "ACPI action undefined: $2"
-#			;;
-#		esac
-#	;;
+			;;
+
+			*)
+				logger "ACPI action undefined: $2"
+			;;
+		esac
+	;;
 
 	button/mute)
 		case "$2" in
 			MUTE)
 				logger "ACPI button/mute"
-				amixer set Master toggle
+#				amixer set Master toggle
 			;;
 
 			*)

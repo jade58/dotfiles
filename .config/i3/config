@@ -70,6 +70,7 @@ bindsym $super+o border toggle
 
 bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86AudioMute exec ~/.config/i3/togglesound.sh
 
 # screenshooter
 bindsym Print exec import -window root ~/pic/scr/`date +%d%m%y%H%M%S`.png
