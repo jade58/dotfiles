@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is run the dmenu with some parameters
+
 # history of dmenu
 hist="$HOME/.cache/dmenu.log"
 

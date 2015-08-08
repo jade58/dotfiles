@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Toggle sound
+# This script is called from ~/.config/.i3/config
+
 amixer set Master toggle
 
 state=`amixer get Master\

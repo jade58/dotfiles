@@ -1,10 +1,13 @@
 #!/bin/sh
 
+# Connect to the Internet with pppd alone
+
+# Mode switch for mobile modem
 # /bin/sudo usb_modeswitch -v 0x12d1 -p 0x1446 -J
 
-tty="ttyUSB0"
+interface="ttyUSB0"
 
-while [ ! -e "/dev/$tty" ]; do
+while [ ! -e "/dev/$interface" ]; do
 	sleep 1
 done
 

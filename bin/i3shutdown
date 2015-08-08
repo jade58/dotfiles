@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Simple shutdown menu for i3-wm alone
+
 function delay() {
 	for ((i=3; i > 0; i--)); do
 		echo "${i}..."

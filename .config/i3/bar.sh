@@ -5,6 +5,11 @@
 ## Generate JSON for i3bar
 ## kalterfive
 ##
+## Dependencies:
+## skb -- get language
+## sensors -- get heating cpu
+## acpi -- get battery state
+##
 
 
 #	{{{ Error codes
@@ -332,7 +337,9 @@ function get_battery_color() {
 
 function get_battery_icon() {
 	local battery_level=$1
-	local state=`cat /sys/class/power_supply/BAT0/status`
+	local state=`acpi\
+			| awk '{print($3);}'\
+			| sed 's/,//g'`
 
 	case "$state" in
 		Discharging)
@@ -362,7 +369,9 @@ function get_battery_icon() {
 }
 
 function get_battery_level() {
-	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
+#	battery_level=`cat /sys/class/power_supply/BAT0/capacity`
+	battery_level=`acpi\
+			| sed 's/%,.*//g;s/.*\s//g'`
 
 	## JSON output
 	local full_text='"full_text":"'$battery_level'%"'

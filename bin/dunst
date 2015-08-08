@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This script is run dunst with some parameters without dunst.conf
+
 killall /usr/bin/dunst
 
 fn='Terminus Re33'
