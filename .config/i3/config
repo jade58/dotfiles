@@ -221,6 +221,7 @@ assign [class="Deadbeef"]	→ "4:MEDIA"
 assign [class="Netbeans"]	→ "5:IDE"
 assign [class="Gimp"]		→ "6:GRAPH"
 assign [class="Pcmanfm"]	→ "7:FILES"
+assign [class="Engrampa"]   → "7:FILES"
 assign [class="Geeqie"]		→ "7:FILES"
 
 
