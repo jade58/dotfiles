@@ -3,6 +3,7 @@
 
 ##
 ## Generate JSON for i3bar
+## A replacement for i3status written in bash
 ## kalterfive
 ##
 ## Dependencies:
