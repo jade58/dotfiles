@@ -11,6 +11,7 @@ echo 2344 | sudo tee /sys/class/backlight/intel_backlight/brightness > /dev/null
 ##
 
 # $HOME/bin/diald &
+mpd .config/mpd/mpd.conf
 
 
 ##

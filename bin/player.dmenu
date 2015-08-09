@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+
+
+##
+## Control panel for mpd, using mpc and dmenu
+## kalterfive
+##
+
+
+function getCurrentTrack() {
+	echo `mpc -f "%artist% - %title%"\
+			| head -n 1`
+}
+
+function dmenuRun() {
+	## Separator for options -- \n
+	local options=$1
+
+	## Set English language
+	if [ `skb -1` == "Rus" ]; then
+	        xdotool key Mode_switch
+	fi
+
+	## Run
+	echo `echo -e "$options" | dmenu -fn "$fn" -p "$p"\
+			-nb $nb -nf $nf -sb $sb -sf $sf`
+}
+
+
+#	{{{ Events
+
+function Play() {
+	mpc play
+	notify-send "`getCurrentTrack`"
+}
+
+function Pause() {
+	mpc pause
+	notify-send "MPD: Pause"
+}
+
+function Stop() {
+	mpc stop
+	notify-send "MPD: Stop"
+}
+
+function Next() {
+	mpc next
+	notify-send "`getCurrentTrack`"
+}
+
+function Prev() {
+	mpc prev
+	notify-send "`getCurrentTrack`"
+}
+
+function Track() {
+	notify-send "`getCurrentTrack`"
+}
+
+function Clear() {
+	mpc clear
+	notify-send "MPD: Clear"
+}
+
+function Add() {
+	jenre=`ls "$MUSIC"`
+	jenre=`dmenuRun "$jenre"`
+
+	artist=`ls "$MUSIC/$jenre"`
+	artist=`dmenuRun "$artist"`
+
+	album=`ls "$MUSIC/$jenre/$artist"`
+	album=`dmenuRun "$album"`
+
+	playlist="$jenre/$artist/$album"
+	mpc add "$playlist"
+	notify-send "MPC: Add $artist - $album"
+}
+
+function Update() {
+	mpc update
+	notify-send "MPD: Update"
+}
+
+#	}}}
+
+
+MUSIC="$HOME"`cat "$HOME"/.config/mpd/mpd.conf\
+		| grep "music_directory"\
+		| sed 's/\"$//g;s/.*\"//g;s/~//g'`
+
+
+## Options
+Play="play"
+Pause="pause"
+Stop="stop"
+Next="next"
+Prev="prev"
+Track="track"
+Clear="clear"
+Add="add"
+Update="update"
+Options="$Play\n$Pause\n$Stop\n$Next\n$Prev\n$Track\n$Clear\n$Add\n$Update"
+
+
+#	{{{ Style
+
+## Font
+fn="Terminus Re33:style=Regular:size=10"
+
+## Colors
+nb="#222222"
+nf="#dddddd"
+sb="#dddddd"
+sf="#222222"
+
+## Prompt
+p=">>="
+
+#	}}}
+
+
+choise=`dmenuRun $Options`
+
+
+case "$choise" in
+	"$Play")
+		Play
+	;;
+
+	"$Pause")
+		Pause
+	;;
+
+	"$Stop")
+		Stop
+	;;
+
+	"$Next")
+		Next
+	;;
+
+	"$Prev")
+		Prev
+	;;
+
+	"$Track")
+		Track
+	;;
+
+	"$Clear")
+		Clear
+	;;
+
+	"$Add")
+		Add
+	;;
+
+	"$Update")
+		Update
+	;;
+esac

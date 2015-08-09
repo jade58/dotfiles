@@ -82,6 +82,8 @@ bindsym $super+t exec $term
 # start dmenu (a program launcher)
 bindsym $super+d exec ~/bin/dmenu
 
+# start shell for mpd and mpc
+bindsym $super+n exec ~/bin/player.dmenu
 
 ##
 ## tiles
