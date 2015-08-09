@@ -58,6 +58,10 @@ function Track() {
 	notify-send "`getCurrentTrack`"
 }
 
+function Playlist() {
+	notify-send "`mpc playlist`"
+}
+
 function Clear() {
 	mpc clear
 	notify-send "MPD: Clear"
@@ -98,10 +102,11 @@ Stop="stop"
 Next="next"
 Prev="prev"
 Track="track"
+Playlist="list"
 Clear="clear"
 Add="add"
 Update="update"
-Options="$Play\n$Pause\n$Stop\n$Next\n$Prev\n$Track\n$Clear\n$Add\n$Update"
+Options="$Play\n$Pause\n$Stop\n$Next\n$Prev\n$Track\n$Playlist\n$Clear\n$Add\n$Update"
 
 
 #	{{{ Style
@@ -125,39 +130,14 @@ choise=`dmenuRun $Options`
 
 
 case "$choise" in
-	"$Play")
-		Play
-	;;
-
-	"$Pause")
-		Pause
-	;;
-
-	"$Stop")
-		Stop
-	;;
-
-	"$Next")
-		Next
-	;;
-
-	"$Prev")
-		Prev
-	;;
-
-	"$Track")
-		Track
-	;;
-
-	"$Clear")
-		Clear
-	;;
-
-	"$Add")
-		Add
-	;;
-
-	"$Update")
-		Update
-	;;
+	"$Play") Play ;;
+	"$Pause") Pause ;;
+	"$Stop") Stop ;;
+	"$Next") Next ;;
+	"$Prev") Prev ;;
+	"$Track") Track ;;
+	"$Playlist") Playlist ;;
+	"$Clear") Clear ;;
+	"$Add") Add ;;
+	"$Update") Update ;;
 esac
