@@ -68,6 +68,7 @@ bindsym $super+m exec ~/bin/cursor.toggle
 
 bindsym $super+o border toggle
 
+# Functional keys
 bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym XF86MonBrightnessDown exec xbacklight -10
 bindsym XF86AudioMute exec ~/.config/i3/togglesound.sh
@@ -84,6 +85,11 @@ bindsym $super+d exec ~/bin/dmenu
 
 # start shell for mpd and mpc
 bindsym $super+n exec ~/bin/player.dmenu
+
+# mpd && mpc
+bindsym $super+Left exec ~/bin/player.dmenu next
+bindsym $super+Right exec ~/bin/player.dmenu prev
+
 
 ##
 ## tiles

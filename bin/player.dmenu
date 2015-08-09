@@ -126,7 +126,7 @@ p=">>="
 #	}}}
 
 
-choise=`dmenuRun $Options`
+[ "$1" ] && choise="$1" || choise=`dmenuRun $Options`
 
 
 case "$choise" in
